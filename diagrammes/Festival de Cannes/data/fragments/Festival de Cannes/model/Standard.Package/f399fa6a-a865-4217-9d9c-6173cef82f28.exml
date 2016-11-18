@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="festival de cannes" version="4">
+  <OBJECT>
+    <ID name="festival de cannes" mc="Standard.Package" uid="f399fa6a-a865-4217-9d9c-6173cef82f28"/>
+    <PID name="Festival de Cannes" mc="Standard.Project" uid="a896d1d0-eab4-4d69-b728-165035d7b59c"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[festival de cannes]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Resp. artistique" mc="Standard.Actor" uid="b4992945-4c75-4c78-8d7a-d6183dee0335"/>
+        <COMPID name="Plannifier les projections" mc="Standard.UseCase" uid="720f4de2-0cf6-474c-98c4-301e354cb8e7"/>
+        <COMPID name="Définir la liste des invités" mc="Standard.UseCase" uid="1e5e8df6-5dac-4a32-8df4-4f2bd87eb976"/>
+        <COMPID name="Géréer les invités" mc="Standard.UseCase" uid="d1431a56-a38a-456f-9599-e5958cbbd7bd"/>
+        <COMPID name="Répondre aux attentes des VIP" mc="Standard.UseCase" uid="386b82c7-985d-41e3-ad7f-2cb983d7a53b"/>
+        <COMPID name="Insérer un film" mc="Standard.UseCase" uid="9b74b457-c716-4ee2-a2fe-a44221c7087e"/>
+        <COMPID name="Déplacer un film" mc="Standard.UseCase" uid="8ede48b9-17a9-4a3d-94d4-7c636c357e45"/>
+        <COMPID name="Supprimer un film" mc="Standard.UseCase" uid="d34c5959-81b1-4361-8ec6-4b55cb009aa3"/>
+        <COMPID name="Resp. logistique/finances" mc="Standard.Actor" uid="76d8ad45-3685-487b-977d-babe00f756d2"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="festival de cannes Use Case diagram" mc="Standard.UseCaseDiagram" uid="c5b4e709-a53e-4bba-9f81-e8a261c7173c"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

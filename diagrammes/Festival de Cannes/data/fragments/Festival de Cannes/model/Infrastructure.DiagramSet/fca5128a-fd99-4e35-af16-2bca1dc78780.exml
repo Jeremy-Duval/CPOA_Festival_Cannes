@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Festival de Cannes" version="4">
+  <OBJECT>
+    <ID name="Festival de Cannes" mc="Infrastructure.DiagramSet" uid="fca5128a-fd99-4e35-af16-2bca1dc78780"/>
+    <PID name="Festival de Cannes" mc="Standard.Project" uid="a896d1d0-eab4-4d69-b728-165035d7b59c"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[Festival de Cannes]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
