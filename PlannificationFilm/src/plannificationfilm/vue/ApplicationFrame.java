@@ -31,8 +31,19 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jPanelCalendrier = new javax.swing.JPanel();
         jPanelAjout = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jPanelModifier = new javax.swing.JPanel();
+        jLabelSelectionF = new javax.swing.JLabel();
+        jComboBoxFilms = new javax.swing.JComboBox();
+        jLabelCategorieF = new javax.swing.JLabel();
+        jComboBoxCategories = new javax.swing.JComboBox();
+        jLabelDateF = new javax.swing.JLabel();
+        jComboBoxDate = new javax.swing.JComboBox();
+        jComboBoxHeure1 = new javax.swing.JComboBox();
+        jLabelHeure1F = new javax.swing.JLabel();
+        jComboBoxHeure2 = new javax.swing.JComboBox();
+        jLabelHeure2F = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabelTitre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,14 +58,14 @@ public class ApplicationFrame extends javax.swing.JFrame {
         );
         jPanelCalendrierLayout.setVerticalGroup(
             jPanelCalendrierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
+            .addGap(0, 316, Short.MAX_VALUE)
         );
 
         jTabbedPaneMenu.addTab("Calendrier", jPanelCalendrier);
 
         jLabel2.setText("Sélectionner un film :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -79,20 +90,85 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         jTabbedPaneMenu.addTab("Ajout Film", jPanelAjout);
+
+        jLabelSelectionF.setText("Sélectionnez un film : ");
+
+        jLabelCategorieF.setText("Nouvelle catégorie film :");
+
+        jComboBoxCategories.setEnabled(false);
+
+        jLabelDateF.setText("Nouvelle date  :");
+
+        jComboBoxDate.setEnabled(false);
+
+        jComboBoxHeure1.setEnabled(false);
+
+        jLabelHeure1F.setText("Nouvelle heure de début de la première plage de diffusion  :");
+
+        jComboBoxHeure2.setEnabled(false);
+
+        jLabelHeure2F.setText("Nouvelle heure de début de la première plage de diffusion  :");
 
         javax.swing.GroupLayout jPanelModifierLayout = new javax.swing.GroupLayout(jPanelModifier);
         jPanelModifier.setLayout(jPanelModifierLayout);
         jPanelModifierLayout.setHorizontalGroup(
             jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGroup(jPanelModifierLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelModifierLayout.createSequentialGroup()
+                        .addComponent(jLabelSelectionF)
+                        .addGap(36, 36, 36)
+                        .addComponent(jComboBoxFilms, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelModifierLayout.createSequentialGroup()
+                        .addComponent(jLabelCategorieF)
+                        .addGap(39, 39, 39)
+                        .addComponent(jComboBoxCategories, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelModifierLayout.createSequentialGroup()
+                        .addComponent(jLabelDateF)
+                        .addGap(40, 40, 40)
+                        .addComponent(jComboBoxDate, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelModifierLayout.createSequentialGroup()
+                        .addComponent(jLabelHeure1F)
+                        .addGap(40, 40, 40)
+                        .addComponent(jComboBoxHeure1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelModifierLayout.createSequentialGroup()
+                        .addComponent(jLabelHeure2F)
+                        .addGap(40, 40, 40)
+                        .addComponent(jComboBoxHeure2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(258, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
         );
         jPanelModifierLayout.setVerticalGroup(
             jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
+            .addGroup(jPanelModifierLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSelectionF)
+                    .addComponent(jComboBoxFilms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCategorieF)
+                    .addComponent(jComboBoxCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDateF)
+                    .addComponent(jComboBoxDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelHeure1F)
+                    .addComponent(jComboBoxHeure1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelHeure2F)
+                    .addComponent(jComboBoxHeure2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         jTabbedPaneMenu.addTab("Modifier", jPanelModifier);
@@ -105,12 +181,12 @@ public class ApplicationFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelTitre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addComponent(jLabelTitre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,10 +195,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 .addComponent(jLabelTitre)
                 .addContainerGap(344, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(0, 79, Short.MAX_VALUE)
+                    .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -169,11 +244,22 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox jComboBoxCategories;
+    private javax.swing.JComboBox jComboBoxDate;
+    private javax.swing.JComboBox jComboBoxFilms;
+    private javax.swing.JComboBox jComboBoxHeure1;
+    private javax.swing.JComboBox jComboBoxHeure2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelCategorieF;
+    private javax.swing.JLabel jLabelDateF;
+    private javax.swing.JLabel jLabelHeure1F;
+    private javax.swing.JLabel jLabelHeure2F;
+    private javax.swing.JLabel jLabelSelectionF;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JPanel jPanelAjout;
     private javax.swing.JPanel jPanelCalendrier;
     private javax.swing.JPanel jPanelModifier;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPaneMenu;
     // End of variables declaration//GEN-END:variables
 }
