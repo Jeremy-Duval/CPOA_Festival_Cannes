@@ -30,8 +30,18 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jPanelCalendrier = new javax.swing.JPanel();
         jPanelAjout = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabelFilm = new javax.swing.JLabel();
+        jComboBoxFilm = new javax.swing.JComboBox<>();
+        jLabelCategorie = new javax.swing.JLabel();
+        jComboBoxCategorie = new javax.swing.JComboBox<>();
+        jLabelDate = new javax.swing.JLabel();
+        jComboBoxDate = new javax.swing.JComboBox<>();
+        jLabelDiff1 = new javax.swing.JLabel();
+        jComboBoxDiff1 = new javax.swing.JComboBox<>();
+        jLabelDiff2 = new javax.swing.JLabel();
+        jComboBoxDiff2 = new javax.swing.JComboBox<>();
+        jButtonValider = new javax.swing.JButton();
+        jButtonAnnuler = new javax.swing.JButton();
         jPanelModifier = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
 
@@ -52,14 +62,39 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         jTabbedPaneMenu.addTab("Calendrier", jPanelCalendrier);
 
-        jLabel2.setText("Sélectionner un film :");
+        jLabelFilm.setText("Sélectionner un film :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxFilm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxFilm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxFilmActionPerformed(evt);
             }
         });
+
+        jLabelCategorie.setText("Sélectionner une catégorie :");
+
+        jComboBoxCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabelDate.setText("Sélectionner une date :");
+
+        jComboBoxDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabelDiff1.setText("Sélectionner l'heure de début de la première diffusion :");
+
+        jComboBoxDiff1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabelDiff2.setText("Sélectionner l'heure de début de la seconde diffusion :");
+
+        jComboBoxDiff2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButtonValider.setText("Valider");
+        jButtonValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonValiderActionPerformed(evt);
+            }
+        });
+
+        jButtonAnnuler.setText("Annuler");
 
         javax.swing.GroupLayout jPanelAjoutLayout = new javax.swing.GroupLayout(jPanelAjout);
         jPanelAjout.setLayout(jPanelAjoutLayout);
@@ -67,19 +102,62 @@ public class ApplicationFrame extends javax.swing.JFrame {
             jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAjoutLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(436, Short.MAX_VALUE))
+                .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                        .addComponent(jLabelCategorie)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                        .addComponent(jLabelFilm)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxFilm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                        .addComponent(jLabelDate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                        .addComponent(jLabelDiff1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxDiff1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                        .addComponent(jLabelDiff2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxDiff2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                        .addComponent(jButtonValider)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAnnuler)))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
         jPanelAjoutLayout.setVerticalGroup(
             jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAjoutLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBoxDiff2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                        .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelFilm)
+                            .addComponent(jComboBoxFilm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelCategorie)
+                            .addComponent(jComboBoxCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDate)
+                            .addComponent(jComboBoxDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDiff1)
+                            .addComponent(jComboBoxDiff1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelDiff2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(200, Short.MAX_VALUE))
+                    .addComponent(jButtonValider)
+                    .addComponent(jButtonAnnuler))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPaneMenu.addTab("Ajout Film", jPanelAjout);
@@ -128,9 +206,13 @@ public class ApplicationFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFilmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxFilmActionPerformed
+
+    private void jButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonValiderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,8 +250,18 @@ public class ApplicationFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButtonAnnuler;
+    private javax.swing.JButton jButtonValider;
+    private javax.swing.JComboBox<String> jComboBoxCategorie;
+    private javax.swing.JComboBox<String> jComboBoxDate;
+    private javax.swing.JComboBox<String> jComboBoxDiff1;
+    private javax.swing.JComboBox<String> jComboBoxDiff2;
+    private javax.swing.JComboBox<String> jComboBoxFilm;
+    private javax.swing.JLabel jLabelCategorie;
+    private javax.swing.JLabel jLabelDate;
+    private javax.swing.JLabel jLabelDiff1;
+    private javax.swing.JLabel jLabelDiff2;
+    private javax.swing.JLabel jLabelFilm;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JPanel jPanelAjout;
     private javax.swing.JPanel jPanelCalendrier;
