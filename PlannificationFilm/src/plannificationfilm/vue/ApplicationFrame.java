@@ -10,7 +10,7 @@ package plannificationfilm.vue;
  * @author jeremy
  */
 public class ApplicationFrame extends javax.swing.JFrame {
-
+    Object object;
     /**
      * Creates new form ApplicationFrame
      */
@@ -44,6 +44,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jComboBoxHeure2 = new javax.swing.JComboBox();
         jLabelHeure2F = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButtonValiderModif = new javax.swing.JButton();
+        jButtonAnnulerModif = new javax.swing.JButton();
         jLabelTitre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,6 +100,13 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         jLabelSelectionF.setText("Sélectionnez un film : ");
 
+        jComboBoxFilms.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxFilms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFilmsActionPerformed(evt);
+            }
+        });
+
         jLabelCategorieF.setText("Nouvelle catégorie film :");
 
         jComboBoxCategories.setEnabled(false);
@@ -113,35 +123,58 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         jLabelHeure2F.setText("Nouvelle heure de début de la première plage de diffusion  :");
 
+        jButtonValiderModif.setText("Valider");
+        jButtonValiderModif.setEnabled(false);
+        jButtonValiderModif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonValiderModifActionPerformed(evt);
+            }
+        });
+
+        jButtonAnnulerModif.setText("Annuler");
+        jButtonAnnulerModif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnnulerModifActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelModifierLayout = new javax.swing.GroupLayout(jPanelModifier);
         jPanelModifier.setLayout(jPanelModifierLayout);
         jPanelModifierLayout.setHorizontalGroup(
             jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addComponent(jSeparator2)
             .addGroup(jPanelModifierLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelModifierLayout.createSequentialGroup()
-                        .addComponent(jLabelSelectionF)
-                        .addGap(36, 36, 36)
-                        .addComponent(jComboBoxFilms, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelModifierLayout.createSequentialGroup()
+                                .addComponent(jLabelSelectionF)
+                                .addGap(36, 36, 36)
+                                .addComponent(jComboBoxFilms, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelModifierLayout.createSequentialGroup()
+                                .addComponent(jLabelCategorieF)
+                                .addGap(39, 39, 39)
+                                .addComponent(jComboBoxCategories, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelModifierLayout.createSequentialGroup()
+                                .addComponent(jLabelDateF)
+                                .addGap(40, 40, 40)
+                                .addComponent(jComboBoxDate, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelModifierLayout.createSequentialGroup()
+                                .addComponent(jLabelHeure1F)
+                                .addGap(40, 40, 40)
+                                .addComponent(jComboBoxHeure1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelModifierLayout.createSequentialGroup()
+                                .addComponent(jLabelHeure2F)
+                                .addGap(40, 40, 40)
+                                .addComponent(jComboBoxHeure2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(258, Short.MAX_VALUE))
                     .addGroup(jPanelModifierLayout.createSequentialGroup()
-                        .addComponent(jLabelCategorieF)
-                        .addGap(39, 39, 39)
-                        .addComponent(jComboBoxCategories, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelModifierLayout.createSequentialGroup()
-                        .addComponent(jLabelDateF)
-                        .addGap(40, 40, 40)
-                        .addComponent(jComboBoxDate, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelModifierLayout.createSequentialGroup()
-                        .addComponent(jLabelHeure1F)
-                        .addGap(40, 40, 40)
-                        .addComponent(jComboBoxHeure1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelModifierLayout.createSequentialGroup()
-                        .addComponent(jLabelHeure2F)
-                        .addGap(40, 40, 40)
-                        .addComponent(jComboBoxHeure2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(258, Short.MAX_VALUE))
-            .addComponent(jSeparator1)
+                        .addComponent(jButtonValiderModif)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAnnulerModif)
+                        .addGap(30, 30, 30))))
         );
         jPanelModifierLayout.setVerticalGroup(
             jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +183,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSelectionF)
                     .addComponent(jComboBoxFilms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -168,7 +201,13 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelHeure2F)
                     .addComponent(jComboBoxHeure2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                .addGap(29, 29, 29)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonValiderModif)
+                    .addComponent(jButtonAnnulerModif))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jTabbedPaneMenu.addTab("Modifier", jPanelModifier);
@@ -207,6 +246,26 @@ public class ApplicationFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jComboBoxFilmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFilmsActionPerformed
+        object = jComboBoxFilms.getSelectedItem();
+        System.out.println(object);
+        if(object!=null){
+            jComboBoxCategories.setEnabled(true);
+            jComboBoxDate.setEnabled(true);
+            jComboBoxHeure1.setEnabled(true);
+            jComboBoxHeure2.setEnabled(true);
+            jButtonValiderModif.setEnabled(true);
+        }
+    }//GEN-LAST:event_jComboBoxFilmsActionPerformed
+
+    private void jButtonValiderModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderModifActionPerformed
+        // AJOUT A LA BD
+    }//GEN-LAST:event_jButtonValiderModifActionPerformed
+
+    private void jButtonAnnulerModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerModifActionPerformed
+        // RETOUR SUR CALENDRIER
+    }//GEN-LAST:event_jButtonAnnulerModifActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +302,8 @@ public class ApplicationFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAnnulerModif;
+    private javax.swing.JButton jButtonValiderModif;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBoxCategories;
     private javax.swing.JComboBox jComboBoxDate;
@@ -260,6 +321,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelCalendrier;
     private javax.swing.JPanel jPanelModifier;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPaneMenu;
     // End of variables declaration//GEN-END:variables
 }
