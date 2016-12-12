@@ -28,17 +28,74 @@ public class ApplicationFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPaneMenu = new javax.swing.JTabbedPane();
-        jTabbedPaneCalendrier = new javax.swing.JTabbedPane();
-        jTabbedAjout = new javax.swing.JTabbedPane();
-        jTabbedPaneModifier = new javax.swing.JTabbedPane();
+        jPanelCalendrier = new javax.swing.JPanel();
+        jPanelAjout = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jPanelModifier = new javax.swing.JPanel();
         jLabelTitre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPaneMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTabbedPaneMenu.addTab("Calendrier", jTabbedPaneCalendrier);
-        jTabbedPaneMenu.addTab("Ajout Film", jTabbedAjout);
-        jTabbedPaneMenu.addTab("Modifier", jTabbedPaneModifier);
+
+        javax.swing.GroupLayout jPanelCalendrierLayout = new javax.swing.GroupLayout(jPanelCalendrier);
+        jPanelCalendrier.setLayout(jPanelCalendrierLayout);
+        jPanelCalendrierLayout.setHorizontalGroup(
+            jPanelCalendrierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 647, Short.MAX_VALUE)
+        );
+        jPanelCalendrierLayout.setVerticalGroup(
+            jPanelCalendrierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 235, Short.MAX_VALUE)
+        );
+
+        jTabbedPaneMenu.addTab("Calendrier", jPanelCalendrier);
+
+        jLabel2.setText("Sélectionner un film :");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelAjoutLayout = new javax.swing.GroupLayout(jPanelAjout);
+        jPanelAjout.setLayout(jPanelAjoutLayout);
+        jPanelAjoutLayout.setHorizontalGroup(
+            jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(436, Short.MAX_VALUE))
+        );
+        jPanelAjoutLayout.setVerticalGroup(
+            jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAjoutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(200, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneMenu.addTab("Ajout Film", jPanelAjout);
+
+        javax.swing.GroupLayout jPanelModifierLayout = new javax.swing.GroupLayout(jPanelModifier);
+        jPanelModifier.setLayout(jPanelModifierLayout);
+        jPanelModifierLayout.setHorizontalGroup(
+            jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 647, Short.MAX_VALUE)
+        );
+        jPanelModifierLayout.setVerticalGroup(
+            jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 235, Short.MAX_VALUE)
+        );
+
+        jTabbedPaneMenu.addTab("Modifier", jPanelModifier);
 
         jLabelTitre.setFont(new java.awt.Font("Sylfaen", 0, 36)); // NOI18N
         jLabelTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -70,6 +127,10 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,10 +168,12 @@ public class ApplicationFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelTitre;
-    private javax.swing.JTabbedPane jTabbedAjout;
-    private javax.swing.JTabbedPane jTabbedPaneCalendrier;
+    private javax.swing.JPanel jPanelAjout;
+    private javax.swing.JPanel jPanelCalendrier;
+    private javax.swing.JPanel jPanelModifier;
     private javax.swing.JTabbedPane jTabbedPaneMenu;
-    private javax.swing.JTabbedPane jTabbedPaneModifier;
     // End of variables declaration//GEN-END:variables
 }
