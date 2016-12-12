@@ -27,19 +27,18 @@ public class ApplicationFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPaneModifier = new javax.swing.JTabbedPane();
+        jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jTabbedPaneCalendrier = new javax.swing.JTabbedPane();
         jTabbedAjout = new javax.swing.JTabbedPane();
-        jTabbedPaneMenu = new javax.swing.JTabbedPane();
+        jTabbedPaneModifier = new javax.swing.JTabbedPane();
         jLabelTitre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPaneModifier.addTab("Calendrier", jTabbedPaneCalendrier);
-        jTabbedPaneModifier.addTab("Ajout Film", jTabbedAjout);
-
         jTabbedPaneMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTabbedPaneModifier.addTab("tab1", jTabbedPaneMenu);
+        jTabbedPaneMenu.addTab("Calendrier", jTabbedPaneCalendrier);
+        jTabbedPaneMenu.addTab("Ajout Film", jTabbedAjout);
+        jTabbedPaneMenu.addTab("Modifier", jTabbedPaneModifier);
 
         jLabelTitre.setFont(new java.awt.Font("Sylfaen", 0, 36)); // NOI18N
         jLabelTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -49,16 +48,24 @@ public class ApplicationFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneModifier, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jLabelTitre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabelTitre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jTabbedPaneModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(344, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
