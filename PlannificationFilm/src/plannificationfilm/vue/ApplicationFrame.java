@@ -10,7 +10,13 @@ package plannificationfilm.vue;
  * @author jeremy
  */
 public class ApplicationFrame extends javax.swing.JFrame {
-    Object object;
+    private Object object;
+    /*****************A modifier suivant les types************************/
+    private Object film;
+    private Object categorie;
+    private Object date;
+    private Object heure1;
+    private Object heure2;
     /**
      * Creates new form ApplicationFrame
      */
@@ -30,8 +36,6 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jPanelCalendrier = new javax.swing.JPanel();
         jPanelAjout = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
         jPanelModifier = new javax.swing.JPanel();
         jLabelSelectionF = new javax.swing.JLabel();
         jComboBoxFilms = new javax.swing.JComboBox();
@@ -61,39 +65,20 @@ public class ApplicationFrame extends javax.swing.JFrame {
         );
         jPanelCalendrierLayout.setVerticalGroup(
             jPanelCalendrierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 316, Short.MAX_VALUE)
+            .addGap(0, 375, Short.MAX_VALUE)
         );
 
         jTabbedPaneMenu.addTab("Calendrier", jPanelCalendrier);
-
-        jLabel2.setText("Sélectionner un film :");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanelAjoutLayout = new javax.swing.GroupLayout(jPanelAjout);
         jPanelAjout.setLayout(jPanelAjoutLayout);
         jPanelAjoutLayout.setHorizontalGroup(
             jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAjoutLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(436, Short.MAX_VALUE))
+            .addGap(0, 647, Short.MAX_VALUE)
         );
         jPanelAjoutLayout.setVerticalGroup(
             jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAjoutLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(285, Short.MAX_VALUE))
+            .addGap(0, 375, Short.MAX_VALUE)
         );
 
         jTabbedPaneMenu.addTab("Ajout Film", jPanelAjout);
@@ -174,7 +159,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
                         .addComponent(jButtonValiderModif)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAnnulerModif)
-                        .addGap(30, 30, 30))))
+                        .addGap(23, 23, 23))))
         );
         jPanelModifierLayout.setVerticalGroup(
             jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,11 +188,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
                     .addComponent(jComboBoxHeure2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonValiderModif)
                     .addComponent(jButtonAnnulerModif))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPaneMenu.addTab("Modifier", jPanelModifier);
@@ -220,31 +205,24 @@ public class ApplicationFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelTitre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jLabelTitre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(19, 19, 19)
                 .addComponent(jLabelTitre)
-                .addContainerGap(344, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 79, Short.MAX_VALUE)
-                    .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBoxFilmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFilmsActionPerformed
         object = jComboBoxFilms.getSelectedItem();
@@ -259,58 +237,43 @@ public class ApplicationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxFilmsActionPerformed
 
     private void jButtonValiderModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderModifActionPerformed
-        // AJOUT A LA BD
+        film = jComboBoxFilms.getSelectedItem();
+        categorie = jComboBoxCategories.getSelectedItem();
+        date = jComboBoxDate.getSelectedItem();
+        heure1 = jComboBoxHeure1.getSelectedItem();
+        heure2 = jComboBoxHeure2.getSelectedItem();
+        System.out.println("*************************************************");
+        System.out.println("Film : "+film+"\nCategorie : "+categorie+"\nDate : "+date
+            +"\nDebut première plage horaire : "+heure1+"\nDebut deuxième plage horaire : "+heure2);
+        System.out.println("*************************************************");
+        // ***UPDATE**** DE LA BD
+        // RETOUR AU CALENDRIER
     }//GEN-LAST:event_jButtonValiderModifActionPerformed
 
     private void jButtonAnnulerModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerModifActionPerformed
-        // RETOUR SUR CALENDRIER
+        if(!jButtonValiderModif.isEnabled()){ // retour sur calendrier
+            System.out.println("ann, no val");
+            this.initComponents();
+        }else{ //annulation selection film
+            System.out.println("ann, val");
+            //remise à 0 de la selection de film et vidage des combo box
+            jComboBoxFilms.setSelectedIndex(0);
+            jComboBoxCategories.removeAllItems();
+            jComboBoxDate.removeAllItems();
+            jComboBoxHeure1.removeAllItems();
+            jComboBoxHeure2.removeAllItems();
+        }
     }//GEN-LAST:event_jButtonAnnulerModifActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ApplicationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ApplicationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ApplicationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ApplicationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ApplicationFrame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnnulerModif;
     private javax.swing.JButton jButtonValiderModif;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBoxCategories;
     private javax.swing.JComboBox jComboBoxDate;
     private javax.swing.JComboBox jComboBoxFilms;
     private javax.swing.JComboBox jComboBoxHeure1;
     private javax.swing.JComboBox jComboBoxHeure2;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCategorieF;
     private javax.swing.JLabel jLabelDateF;
     private javax.swing.JLabel jLabelHeure1F;
