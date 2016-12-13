@@ -254,28 +254,38 @@ public class ApplicationFrame extends javax.swing.JFrame {
             +"\nDebut première plage horaire : "+heure1+"\nDebut deuxième plage horaire : "+heure2);
         System.out.println("*************************************************");
         // ***UPDATE**** DE LA BD
-        // RETOUR AU CALENDRIER
+        reinit_modifier_film();
+        jTabbedPaneMenu.setSelectedIndex(0);
     }//GEN-LAST:event_jButtonValiderModifActionPerformed
 
     private void jButtonAnnulerModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerModifActionPerformed
         if(!jButtonValiderModif.isEnabled()){ // retour sur calendrier
             jTabbedPaneMenu.setSelectedIndex(0);
         }else{ //annulation selection film
-            //remise à 0 de la selection de film et vidage des combo box
-            jComboBoxFilms.setSelectedIndex(0);
-            jComboBoxCategories.removeAllItems();
-            jComboBoxDate.removeAllItems();
-            jComboBoxHeure1.removeAllItems();
-            jComboBoxHeure2.removeAllItems();
-            //remise des boutons et comboBox à disable
-            jComboBoxCategories.setEnabled(false);
-            jComboBoxDate.setEnabled(false);
-            jComboBoxHeure1.setEnabled(false);
-            jComboBoxHeure2.setEnabled(false);
-            jButtonValiderModif.setEnabled(false);
+            reinit_modifier_film();
         }
     }//GEN-LAST:event_jButtonAnnulerModifActionPerformed
 
+    /*****************************FONCTIONS PERSO******************************/
+    /**
+     * Permet de remettre les combo box et le bouton "valider" à leur état initial.
+     * @author Jérémy
+     * @since 13/12/2016
+     */
+    private void reinit_modifier_film() {
+        //remise à 0 de la selection de film et vidage des combo box
+        jComboBoxFilms.setSelectedIndex(0);
+        jComboBoxCategories.removeAllItems();
+        jComboBoxDate.removeAllItems();
+        jComboBoxHeure1.removeAllItems();
+        jComboBoxHeure2.removeAllItems();
+        //remise des boutons et comboBox à disable
+        jComboBoxCategories.setEnabled(false);
+        jComboBoxDate.setEnabled(false);
+        jComboBoxHeure1.setEnabled(false);
+        jComboBoxHeure2.setEnabled(false);
+        jButtonValiderModif.setEnabled(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnnulerModif;
