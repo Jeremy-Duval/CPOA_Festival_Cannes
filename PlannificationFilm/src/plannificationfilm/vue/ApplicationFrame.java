@@ -228,11 +228,18 @@ public class ApplicationFrame extends javax.swing.JFrame {
         object = jComboBoxFilms.getSelectedItem();
         System.out.println(object);
         if(object!=null){
+            //activation des comboBox et bouton "valider"
             jComboBoxCategories.setEnabled(true);
             jComboBoxDate.setEnabled(true);
             jComboBoxHeure1.setEnabled(true);
             jComboBoxHeure2.setEnabled(true);
             jButtonValiderModif.setEnabled(true);
+            
+            /*//les combobox deviennent éditable
+            jComboBoxCategories.setEditable(true);
+            jComboBoxDate.setEditable(true);
+            jComboBoxHeure1.setEditable(true);
+            jComboBoxHeure2.setEditable(true);*/
         }
     }//GEN-LAST:event_jComboBoxFilmsActionPerformed
 
@@ -252,16 +259,20 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jButtonAnnulerModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerModifActionPerformed
         if(!jButtonValiderModif.isEnabled()){ // retour sur calendrier
-            System.out.println("ann, no val");
-            this.initComponents();
+            jTabbedPaneMenu.setSelectedIndex(0);
         }else{ //annulation selection film
-            System.out.println("ann, val");
             //remise à 0 de la selection de film et vidage des combo box
             jComboBoxFilms.setSelectedIndex(0);
             jComboBoxCategories.removeAllItems();
             jComboBoxDate.removeAllItems();
             jComboBoxHeure1.removeAllItems();
             jComboBoxHeure2.removeAllItems();
+            //remise des boutons et comboBox à disable
+            jComboBoxCategories.setEnabled(false);
+            jComboBoxDate.setEnabled(false);
+            jComboBoxHeure1.setEnabled(false);
+            jComboBoxHeure2.setEnabled(false);
+            jButtonValiderModif.setEnabled(false);
         }
     }//GEN-LAST:event_jButtonAnnulerModifActionPerformed
 
