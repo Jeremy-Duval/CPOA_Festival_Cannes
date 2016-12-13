@@ -48,6 +48,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jLabelTitre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Planning des projections");
 
         jTabbedPaneMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -90,14 +91,14 @@ public class ApplicationFrame extends javax.swing.JFrame {
             jPanelCalendrierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCalendrierLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 90, Short.MAX_VALUE))
+                .addGap(0, 113, Short.MAX_VALUE))
         );
 
         jTabbedPaneMenu.addTab("Calendrier", jPanelCalendrier);
 
         jLabelFilm.setText("Sélectionner un film :");
 
-        jComboBoxFilm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IItem 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxFilm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jurassic Park", "Star Wars", "Le Seigneur des Anneaux", "Kingdom of Heaven" }));
         jComboBoxFilm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxFilmActionPerformed(evt);
@@ -106,19 +107,29 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         jLabelCategorie.setText("Sélectionner une catégorie :");
 
-        jComboBoxCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Compétition", "Hors compétition", "Un Certain Regard" }));
+        jComboBoxCategorie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCategorieActionPerformed(evt);
+            }
+        });
 
         jLabelDate.setText("Sélectionner une date :");
 
-        jComboBoxDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lundi", "Mardi", "Mercredi" }));
 
         jLabelDiff1.setText("Sélectionner l'heure de début de la première diffusion :");
 
-        jComboBoxDiff1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDiff1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "10", "12" }));
 
         jLabelDiff2.setText("Sélectionner l'heure de début de la seconde diffusion :");
 
-        jComboBoxDiff2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDiff2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "14", "16", "18" }));
+        jComboBoxDiff2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDiff2ActionPerformed(evt);
+            }
+        });
 
         jButtonValider.setText("Valider");
         jButtonValider.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +139,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
         });
 
         jButtonAnnuler.setText("Annuler");
+        jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnnulerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelAjoutLayout = new javax.swing.GroupLayout(jPanelAjout);
         jPanelAjout.setLayout(jPanelAjoutLayout);
@@ -160,7 +176,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
                         .addComponent(jButtonValider)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonAnnuler)))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         jPanelAjoutLayout.setVerticalGroup(
             jPanelAjoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +219,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         );
         jPanelModifierLayout.setVerticalGroup(
             jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
 
         jTabbedPaneMenu.addTab("Modifier", jPanelModifier);
@@ -216,12 +232,12 @@ public class ApplicationFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelTitre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addComponent(jLabelTitre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,10 +246,10 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 .addComponent(jLabelTitre)
                 .addContainerGap(344, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(79, Short.MAX_VALUE)
+                    .addComponent(jTabbedPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(56, Short.MAX_VALUE)))
         );
 
         pack();
@@ -245,8 +261,41 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderActionPerformed
         // TODO add your handling code here:
+        Object film, categorie, date, diff1, diff2;
+        film = jComboBoxFilm.getSelectedItem();
+        categorie = jComboBoxCategorie.getSelectedItem();
+        date = jComboBoxDate.getSelectedItem();
+        diff1 = jComboBoxDiff1.getSelectedItem();
+        diff2 = jComboBoxDiff2.getSelectedItem();
+        System.out.print(film);
+        System.out.print(categorie);
+        System.out.print(date);
+        System.out.print(diff1);
+        System.out.print(diff2);
+        // Méthode d'essai pour récupérer les valeurs des combobox
     }//GEN-LAST:event_jButtonValiderActionPerformed
 
+    private void jComboBoxDiff2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiff2ActionPerformed
+
+    }//GEN-LAST:event_jComboBoxDiff2ActionPerformed
+
+    private void jComboBoxCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategorieActionPerformed
+        if (jComboBoxCategorie.getSelectedItem()=="Compétition")
+        {
+            jComboBoxDiff2.enable();
+        }
+        else
+        {
+            jComboBoxDiff2.disable();
+        }
+        //Méthode empêchant la saisie d'un deuxième horaire de diffusion s'il ne doit pas y en avoir 
+    }//GEN-LAST:event_jComboBoxCategorieActionPerformed
+
+    private void jButtonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerActionPerformed
+        jTabbedPaneMenu.setSelectedIndex(0);
+        //Méthode retournant l'utilisateur vers le calendrier lorsqu'il annule
+    }//GEN-LAST:event_jButtonAnnulerActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -275,6 +324,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ApplicationFrame().setVisible(true);
