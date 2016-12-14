@@ -14,7 +14,10 @@ import plannificationfilm.controleur.PlannificationFilm;
  * @since 13/12/2016
  */
 public class ApplicationFrame extends javax.swing.JFrame {
-    private Object object;
+    private Object objectFilm;
+    private Object objectDate;
+    private Object objectHeure;
+    private boolean firstPassage = true;
     /*****************A modifier suivant les types************************/
     private Object film;
     private Object categorie;
@@ -105,8 +108,18 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jLabelDateF.setText("Nouvelle date  :");
 
         jComboBoxDate.setEnabled(false);
+        jComboBoxDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDateActionPerformed(evt);
+            }
+        });
 
         jComboBoxHeure1.setEnabled(false);
+        jComboBoxHeure1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHeure1ActionPerformed(evt);
+            }
+        });
 
         jLabelHeure1F.setText("Nouvelle heure de début de la première plage de diffusion  :");
 
@@ -234,14 +247,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
         int i;
         String[] list;
         
-        object = jComboBoxFilms.getSelectedItem();
-        System.out.println(object);
-        if(object!=null){
+        objectFilm = jComboBoxFilms.getSelectedItem();
+        if(objectFilm!=null){
             //activation des comboBox et bouton "valider"
             jComboBoxCategories.setEnabled(true);
             jComboBoxDate.setEnabled(true);
-            jComboBoxHeure1.setEnabled(true);
-            jComboBoxHeure2.setEnabled(true);
             jButtonValiderModif.setEnabled(true);
             
             list = this.ListCategoryToString();
@@ -255,14 +265,6 @@ public class ApplicationFrame extends javax.swing.JFrame {
             i = 0;
             while(i<list.length){
                 jComboBoxDate.addItem(list[i]);
-                i++;
-            }
-            
-            list = this.ListHorairesToString();
-            i = 0;
-            while(i<list.length){
-                jComboBoxHeure1.addItem(list[i]);
-                jComboBoxHeure2.addItem(list[i]);
                 i++;
             }
         }
@@ -290,6 +292,38 @@ public class ApplicationFrame extends javax.swing.JFrame {
             reinit_modifier_film();
         }
     }//GEN-LAST:event_jButtonAnnulerModifActionPerformed
+
+    private void jComboBoxDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDateActionPerformed
+        int i;
+        String[] list;
+        
+        System.out.println("OK1");
+        if(!firstPassage){//une action est produite lors de l'activation, on ne souhaite pas la prendre en compte
+            
+                System.out.println("OK2");
+            objectDate = jComboBoxDate.getSelectedItem();
+            if(objectDate!=null){
+                System.out.println(objectDate);
+                //activation des comboBox
+                jComboBoxHeure1.setEnabled(true);
+                jComboBoxHeure2.setEnabled(true);
+
+                list = this.ListHorairesToString((String) objectFilm);
+                i = 0;
+                while(i<list.length){
+                    jComboBoxHeure1.addItem(list[i]);
+                    jComboBoxHeure2.addItem(list[i]);
+                    i++;
+                }
+            }
+        } else {
+            firstPassage = false;
+        }
+    }//GEN-LAST:event_jComboBoxDateActionPerformed
+
+    private void jComboBoxHeure1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHeure1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxHeure1ActionPerformed
 
     /*****************************FONCTIONS PERSO******************************/
     
@@ -364,13 +398,14 @@ public class ApplicationFrame extends javax.swing.JFrame {
     /**
      * Cette fonction appelle le controleur et transforme la liste d'horaires
      * en format acceptable pour la combo box.
+     * @param date : String : date pour laquelle les horaires doivent êtres récupérés.
      * @return listHorairesString : array of string.
      * @author Jérémy
      * @since 14/12/2016
      */
-    private String[] ListHorairesToString() {
+    private String[] ListHorairesToString(String date) {
         ArrayList listHorairesArray;
-        listHorairesArray = PlannificationFilm.getDate();
+        listHorairesArray = PlannificationFilm.getHoraires(date);
         
         String[] listHorairesString = this.ArrayListToString(listHorairesArray);
         
