@@ -5,6 +5,9 @@
  */
 package plannificationfilm.vue;
 
+import java.util.ArrayList;
+import plannificationfilm.controleur.PlannificationFilm;
+
 /**
  *
  * @author jeremy
@@ -85,7 +88,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         jLabelSelectionF.setText("Sélectionnez un film : ");
 
-        jComboBoxFilms.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        //on récupère la liste des films :
+        String[] listFilms = this.ListFilmToString();
+        jComboBoxFilms.setModel(new javax.swing.DefaultComboBoxModel(listFilms));
         jComboBoxFilms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxFilmsActionPerformed(evt);
@@ -133,28 +138,28 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelModifierLayout.createSequentialGroup()
-                        .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelModifierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelModifierLayout.createSequentialGroup()
                                 .addComponent(jLabelSelectionF)
                                 .addGap(36, 36, 36)
-                                .addComponent(jComboBoxFilms, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxFilms, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelModifierLayout.createSequentialGroup()
                                 .addComponent(jLabelCategorieF)
                                 .addGap(39, 39, 39)
-                                .addComponent(jComboBoxCategories, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxCategories, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelModifierLayout.createSequentialGroup()
                                 .addComponent(jLabelDateF)
                                 .addGap(40, 40, 40)
-                                .addComponent(jComboBoxDate, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxDate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelModifierLayout.createSequentialGroup()
                                 .addComponent(jLabelHeure1F)
                                 .addGap(40, 40, 40)
-                                .addComponent(jComboBoxHeure1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxHeure1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelModifierLayout.createSequentialGroup()
                                 .addComponent(jLabelHeure2F)
                                 .addGap(40, 40, 40)
-                                .addComponent(jComboBoxHeure2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(258, Short.MAX_VALUE))
+                                .addComponent(jComboBoxHeure2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(190, Short.MAX_VALUE))
                     .addGroup(jPanelModifierLayout.createSequentialGroup()
                         .addComponent(jButtonValiderModif)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -267,6 +272,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAnnulerModifActionPerformed
 
     /*****************************FONCTIONS PERSO******************************/
+    
     /**
      * Permet de remettre les combo box et le bouton "valider" à leur état initial.
      * @author Jérémy
@@ -285,6 +291,28 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jComboBoxHeure1.setEnabled(false);
         jComboBoxHeure2.setEnabled(false);
         jButtonValiderModif.setEnabled(false);
+    }
+    
+    /**
+     * Cette fonction appelle le controleur et transforme la liste de films
+     * en format acceptable pour la combo box.
+     * @return listFilmString : array of string.
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    private String[] ListFilmToString() {
+        ArrayList listFilmArray;
+        int i;
+        listFilmArray = PlannificationFilm.getFilm();
+        String listFilmString[] = new String[listFilmArray.size()];
+        
+        i=0;
+        while(i < listFilmArray.size()){
+            listFilmString[i] = (String) listFilmArray.get(i);
+            i++;
+        }
+        
+        return listFilmString;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

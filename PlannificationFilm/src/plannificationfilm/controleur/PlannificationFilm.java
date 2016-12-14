@@ -5,6 +5,8 @@
  */
 package plannificationfilm.controleur;
 
+import java.awt.List;
+import java.util.ArrayList;
 import plannificationfilm.vue.ApplicationFrame;
 
 /**
@@ -47,6 +49,30 @@ public class PlannificationFilm {
                 new ApplicationFrame().setVisible(true);
             }
         });
+    }
+    
+    /**
+     * Récupère la liste des films depuis la fonction modele et l'envoi à la vue.
+     * @return listFilm : ArrayList
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    public static ArrayList getFilm(){
+        ArrayList listFilm;
+        listFilm = new ArrayList<>();
+        
+        //link avec modele
+        
+        
+        /***********POUR LES TESTS SANS BD***************/
+        
+        listFilm.add(0,"Star Wars");
+        listFilm.add(1,"Blade");
+        listFilm.add(2,"Pulp Fiction");
+        
+        /***********************************************/
+        
+        return listFilm;
     }
     
 }
