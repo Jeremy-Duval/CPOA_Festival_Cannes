@@ -6,6 +6,7 @@
 package plannificationfilm.vue;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import plannificationfilm.controleur.PlannificationFilm;
 
 /**
@@ -14,8 +15,9 @@ import plannificationfilm.controleur.PlannificationFilm;
  * @since 13/12/2016
  */
 public class ApplicationFrame extends javax.swing.JFrame {
-    private Object objectFilm;
-    private Object objectDate;
+    /*****************Variables de test générique*************************/
+    private Object objectFilm = null;
+    private Object objectDate = null;
     private boolean firstPassage = true;
     /*****************A modifier suivant les types************************/
     private Object film;
@@ -272,13 +274,18 @@ public class ApplicationFrame extends javax.swing.JFrame {
         date = jComboBoxDate.getSelectedItem();
         heure1 = jComboBoxHeure1.getSelectedItem();
         heure2 = jComboBoxHeure2.getSelectedItem();
-        System.out.println("*************************************************");
-        System.out.println("Film : "+film+"\nCategorie : "+categorie+"\nDate : "+date
-            +"\nDebut première plage horaire : "+heure1+"\nDebut deuxième plage horaire : "+heure2);
-        System.out.println("*************************************************");
-        // ***UPDATE**** DE LA BD
-        reinit_modifier_film();
-        jTabbedPaneMenu.setSelectedIndex(0);
+        
+        if(heure1 == heure2){ //on test si les plages horaires ne sont pas les mêmes
+            JOptionPane.showMessageDialog(this,"Vous ne pouvez pas selectionner deux fois la même plage horaire !","Attention", JOptionPane.WARNING_MESSAGE);
+        } else {
+            System.out.println("*************************************************");
+            System.out.println("Film : "+film+"\nCategorie : "+categorie+"\nDate : "+date
+                +"\nDebut première plage horaire : "+heure1+"\nDebut deuxième plage horaire : "+heure2);
+            System.out.println("*************************************************");
+            // ***UPDATE**** DE LA BD
+            reinit_modifier_film();
+            jTabbedPaneMenu.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_jButtonValiderModifActionPerformed
 
     private void jButtonAnnulerModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerModifActionPerformed
@@ -336,6 +343,10 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jComboBoxHeure1.setEnabled(false);
         jComboBoxHeure2.setEnabled(false);
         jButtonValiderModif.setEnabled(false);
+        //réinitilisation des variables de test générique
+        objectFilm = null;
+        objectDate = null;
+        firstPassage = true;
     }
     
     /**
