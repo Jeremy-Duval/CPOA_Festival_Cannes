@@ -53,7 +53,7 @@ public class PlannificationFilm {
     
     /**
      * Récupère la liste des films depuis la fonction modele et l'envoi à la vue.
-     * @return listCategory : ArrayList
+     * @return listHoraires : ArrayList
      * @author Jérémy
      * @since 14/12/2016
      */
@@ -77,7 +77,7 @@ public class PlannificationFilm {
     
     /**
      * Récupère la liste des categorie depuis la fonction modele et l'envoi à la vue.
-     * @return listCategory : ArrayList
+     * @return listHoraires : ArrayList
      * @author Jérémy
      * @since 14/12/2016
      */
@@ -97,6 +97,60 @@ public class PlannificationFilm {
         /***********************************************/
         
         return listCategory;
+    }
+    
+    /**
+     * Récupère la liste des date depuis la fonction modele et l'envoi à la vue.
+     * @return listHoraires : ArrayList
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    public static ArrayList getDate(){
+        ArrayList listDate;
+        listDate = new ArrayList<>();
+        
+        //link avec modele
+        
+        
+        /***********POUR LES TESTS SANS BD***************/
+        listDate.add(0,"8");
+        listDate.add(1,"9");
+        listDate.add(2,"10");
+        listDate.add(3,"12");
+        listDate.add(4,"14");
+        listDate.add(5,"15");
+        
+        /***********************************************/
+        
+        return listDate;
+    }
+    
+    /**
+     * Récupère la liste des heures de début de films disponibles depuis 
+     * la fonction modele et l'envoi à la vue.
+     * @param date : String : horaires pour ce jour
+     * @return listHoraires : ArrayList
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    public static ArrayList getHoraires(String date){
+        ArrayList listHoraires;
+        listHoraires = new ArrayList<>();
+        
+        //link avec modele
+        
+        
+        /***********POUR LES TESTS SANS BD***************/
+        listHoraires.add(0,"10");
+        listHoraires.add(1,"12");
+        listHoraires.add(2,"14");
+        listHoraires.add(3,"15");
+        listHoraires.add(4,"20");
+        listHoraires.add(5,"22");
+        
+        /***********************************************/
+        
+        return listHoraires;
     }
     
 }

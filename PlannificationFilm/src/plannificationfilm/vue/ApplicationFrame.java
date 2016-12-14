@@ -232,7 +232,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     private void jComboBoxFilmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFilmsActionPerformed
         int i;
-        String[] listCategory;
+        String[] list;
         
         object = jComboBoxFilms.getSelectedItem();
         System.out.println(object);
@@ -244,10 +244,25 @@ public class ApplicationFrame extends javax.swing.JFrame {
             jComboBoxHeure2.setEnabled(true);
             jButtonValiderModif.setEnabled(true);
             
-            listCategory = this.ListCategoryToString();
+            list = this.ListCategoryToString();
             i = 0;
-            while(i<listCategory.length){
-                jComboBoxCategories.add((Component)listCategory[i]);
+            while(i<list.length){
+                jComboBoxCategories.addItem(list[i]);
+                i++;
+            }
+            
+            list = this.ListDateToString();
+            i = 0;
+            while(i<list.length){
+                jComboBoxDate.addItem(list[i]);
+                i++;
+            }
+            
+            list = this.ListHorairesToString();
+            i = 0;
+            while(i<list.length){
+                jComboBoxHeure1.addItem(list[i]);
+                jComboBoxHeure2.addItem(list[i]);
                 i++;
             }
         }
@@ -301,7 +316,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
     /**
      * Cette fonction appelle le controleur et transforme la liste de films
      * en format acceptable pour la combo box.
-     * @return listFilmString : array of string.
+     * @return listCategoryString : array of string.
      * @author Jérémy
      * @since 14/12/2016
      */
@@ -317,7 +332,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
     /**
      * Cette fonction appelle le controleur et transforme la liste de categorie
      * en format acceptable pour la combo box.
-     * @return listFilmString : array of string.
+     * @return listCategoryString : array of string.
      * @author Jérémy
      * @since 14/12/2016
      */
@@ -325,11 +340,42 @@ public class ApplicationFrame extends javax.swing.JFrame {
         ArrayList listCategoryArray;
         listCategoryArray = PlannificationFilm.getCategorie();
         
-        String listFilmString[] = this.ArrayListToString(listCategoryArray);
+        String[] listCategoryString = this.ArrayListToString(listCategoryArray);
         
-        return listFilmString;
+        return listCategoryString;
     }
     
+    /**
+     * Cette fonction appelle le controleur et transforme la liste de date
+     * en format acceptable pour la combo box.
+     * @return listHorairesString : array of string.
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    private String[] ListDateToString() {
+        ArrayList listDateArray;
+        listDateArray = PlannificationFilm.getDate();
+        
+        String[] listDateString = this.ArrayListToString(listDateArray);
+        
+        return listDateString;
+    }
+    
+    /**
+     * Cette fonction appelle le controleur et transforme la liste d'horaires
+     * en format acceptable pour la combo box.
+     * @return listHorairesString : array of string.
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    private String[] ListHorairesToString() {
+        ArrayList listHorairesArray;
+        listHorairesArray = PlannificationFilm.getDate();
+        
+        String[] listHorairesString = this.ArrayListToString(listHorairesArray);
+        
+        return listHorairesString;
+    }
     
     /**
      * Cette fonction transforme une ArrayList en chaine de String.
