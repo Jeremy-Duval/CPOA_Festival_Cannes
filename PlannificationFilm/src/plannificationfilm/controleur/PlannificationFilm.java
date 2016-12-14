@@ -162,4 +162,22 @@ public class PlannificationFilm {
         return listHoraires;
     }
     
+    /**
+     * Récupère les données à mettre à jour depuis la vu.
+     * @param film : String : film à mettre à jour
+     * @param categorie : String : nouvelle categorie
+     * @param date : String : nouvelle date
+     * @param heure1 : String : nouvelle premiere plage horaire 1
+     * @param heure2 : String : nouvelle premiere plage horaire 2
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    public static void updatePlannig(String film, String categorie, String date, String heure1, String heure2){
+        //update the BD !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        System.out.println("*************************************************");
+            System.out.println("Film : "+film+"\nCategorie : "+categorie+"\nDate : "+date
+                +"\nDebut première plage horaire : "+heure1+"\nDebut deuxième plage horaire : "+heure2);
+            System.out.println("*************************************************");
+    }
+    
 }

@@ -278,11 +278,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
         if(heure1 == heure2){ //on test si les plages horaires ne sont pas les mêmes
             JOptionPane.showMessageDialog(this,"Vous ne pouvez pas selectionner deux fois la même plage horaire !","Attention", JOptionPane.WARNING_MESSAGE);
         } else {
-            System.out.println("*************************************************");
-            System.out.println("Film : "+film+"\nCategorie : "+categorie+"\nDate : "+date
-                +"\nDebut première plage horaire : "+heure1+"\nDebut deuxième plage horaire : "+heure2);
-            System.out.println("*************************************************");
-            // ***UPDATE**** DE LA BD
+            //update de la bd :
+            PlannificationFilm.updatePlannig((String)film, (String)categorie, (String)date, (String)heure1, (String)heure2);
+            //reinitialisation modifcation
             reinit_modifier_film();
             jTabbedPaneMenu.setSelectedIndex(0);
         }
