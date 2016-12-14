@@ -76,6 +76,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
         });
         jTable1.setToolTipText("");
         jTable1.setName(""); // NOI18N
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -259,42 +264,59 @@ public class ApplicationFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxFilmActionPerformed
 
+// <Méthode d'essai pour récupérer les valeurs des combobox>
     private void jButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderActionPerformed
-        // TODO add your handling code here:
+
         Object film, categorie, date, diff1, diff2;
         film = jComboBoxFilm.getSelectedItem();
         categorie = jComboBoxCategorie.getSelectedItem();
         date = jComboBoxDate.getSelectedItem();
         diff1 = jComboBoxDiff1.getSelectedItem();
         diff2 = jComboBoxDiff2.getSelectedItem();
-        System.out.print(film);
-        System.out.print(categorie);
-        System.out.print(date);
-        System.out.print(diff1);
-        System.out.print(diff2);
-        // Méthode d'essai pour récupérer les valeurs des combobox
+        if (categorie!="Compétition")
+        {
+            System.out.print(film);
+            System.out.print(categorie);
+            System.out.print(date);
+            System.out.print(diff1);
+        }
+        else 
+        {
+            System.out.print(film);
+            System.out.print(categorie);
+            System.out.print(date);
+            System.out.print(diff1);
+            System.out.print(diff2);
+        }
+        
     }//GEN-LAST:event_jButtonValiderActionPerformed
 
     private void jComboBoxDiff2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiff2ActionPerformed
 
     }//GEN-LAST:event_jComboBoxDiff2ActionPerformed
 
+//Méthode empêchant la saisie d'un deuxième horaire de diffusion s'il ne doit pas y en avoir 
     private void jComboBoxCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategorieActionPerformed
-        if (jComboBoxCategorie.getSelectedItem()=="Compétition")
+        if (jComboBoxCategorie.getSelectedItem()!="Compétition")
         {
-            jComboBoxDiff2.enable();
+            jComboBoxDiff2.disable();
         }
         else
         {
-            jComboBoxDiff2.disable();
+            jComboBoxDiff2.enable();
         }
         //Méthode empêchant la saisie d'un deuxième horaire de diffusion s'il ne doit pas y en avoir 
     }//GEN-LAST:event_jComboBoxCategorieActionPerformed
 
+//Méthode retournant l'utilisateur vers le calendrier lorsqu'il annule
     private void jButtonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerActionPerformed
         jTabbedPaneMenu.setSelectedIndex(0);
-        //Méthode retournant l'utilisateur vers le calendrier lorsqu'il annule
+        
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1KeyPressed
     
     /**
      * @param args the command line arguments
