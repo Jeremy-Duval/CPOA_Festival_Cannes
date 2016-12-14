@@ -53,7 +53,7 @@ public class PlannificationFilm {
     
     /**
      * Récupère la liste des films depuis la fonction modele et l'envoi à la vue.
-     * @return listFilm : ArrayList
+     * @return listCategory : ArrayList
      * @author Jérémy
      * @since 14/12/2016
      */
@@ -73,6 +73,30 @@ public class PlannificationFilm {
         /***********************************************/
         
         return listFilm;
+    }
+    
+    /**
+     * Récupère la liste des categorie depuis la fonction modele et l'envoi à la vue.
+     * @return listCategory : ArrayList
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    public static ArrayList getCategorie(){
+        ArrayList listCategory;
+        listCategory = new ArrayList<>();
+        
+        //link avec modele
+        
+        
+        /***********POUR LES TESTS SANS BD***************/
+        
+        listCategory.add(0,"Compétition");
+        listCategory.add(1,"Hors Compétition");
+        listCategory.add(2,"Coup de coeur");
+        
+        /***********************************************/
+        
+        return listCategory;
     }
     
 }

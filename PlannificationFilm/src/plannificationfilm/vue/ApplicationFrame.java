@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import plannificationfilm.controleur.PlannificationFilm;
 
 /**
- *
+ * The application's frame.
  * @author jeremy
+ * @since 13/12/2016
  */
 public class ApplicationFrame extends javax.swing.JFrame {
     private Object object;
@@ -230,6 +231,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxFilmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFilmsActionPerformed
+        int i;
+        String[] listCategory;
+        
         object = jComboBoxFilms.getSelectedItem();
         System.out.println(object);
         if(object!=null){
@@ -240,11 +244,12 @@ public class ApplicationFrame extends javax.swing.JFrame {
             jComboBoxHeure2.setEnabled(true);
             jButtonValiderModif.setEnabled(true);
             
-            /*//les combobox deviennent éditable
-            jComboBoxCategories.setEditable(true);
-            jComboBoxDate.setEditable(true);
-            jComboBoxHeure1.setEditable(true);
-            jComboBoxHeure2.setEditable(true);*/
+            listCategory = this.ListCategoryToString();
+            i = 0;
+            while(i<listCategory.length){
+                jComboBoxCategories.add((Component)listCategory[i]);
+                i++;
+            }
         }
     }//GEN-LAST:event_jComboBoxFilmsActionPerformed
 
@@ -302,17 +307,48 @@ public class ApplicationFrame extends javax.swing.JFrame {
      */
     private String[] ListFilmToString() {
         ArrayList listFilmArray;
-        int i;
         listFilmArray = PlannificationFilm.getFilm();
-        String listFilmString[] = new String[listFilmArray.size()];
+        
+        String listFilmString[] = this.ArrayListToString(listFilmArray);
+        
+        return listFilmString;
+    }
+    
+    /**
+     * Cette fonction appelle le controleur et transforme la liste de categorie
+     * en format acceptable pour la combo box.
+     * @return listFilmString : array of string.
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    private String[] ListCategoryToString() {
+        ArrayList listCategoryArray;
+        listCategoryArray = PlannificationFilm.getCategorie();
+        
+        String listFilmString[] = this.ArrayListToString(listCategoryArray);
+        
+        return listFilmString;
+    }
+    
+    
+    /**
+     * Cette fonction transforme une ArrayList en chaine de String.
+     * @param listArray : ArrayList to convert in String.
+     * @return listString : array of string.
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    private String[] ArrayListToString(ArrayList listArray){
+        int i;
+        String listString[] = new String[listArray.size()];
         
         i=0;
-        while(i < listFilmArray.size()){
-            listFilmString[i] = (String) listFilmArray.get(i);
+        while(i < listArray.size()){
+            listString[i] = (String) listArray.get(i);
             i++;
         }
         
-        return listFilmString;
+        return listString;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
