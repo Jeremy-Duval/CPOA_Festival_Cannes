@@ -141,23 +141,19 @@ public class PlannificationFilm {
         
         
         /***********POUR LES TESTS SANS BD***************/
-        switch(date){
-            case "8" :
+        if(date.equals("8")){
                 listHoraires.add(0,"10");
                 listHoraires.add(1,"11");
-                break;
-            case "10" :
-                listHoraires.add(4,"20");
-                listHoraires.add(5,"22");
-                break;
-            default :
+        }else if(date.equals("10")){
+                listHoraires.add(0,"20");
+                listHoraires.add(1,"22");
+        } else {
                 listHoraires.add(0,"10");
                 listHoraires.add(1,"12");
                 listHoraires.add(2,"14");
                 listHoraires.add(3,"15");
                 listHoraires.add(4,"20");
                 listHoraires.add(5,"22");
-                break;
         }
         
         

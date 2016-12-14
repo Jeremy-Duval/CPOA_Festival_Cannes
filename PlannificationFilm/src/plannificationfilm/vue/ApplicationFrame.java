@@ -16,7 +16,6 @@ import plannificationfilm.controleur.PlannificationFilm;
 public class ApplicationFrame extends javax.swing.JFrame {
     private Object objectFilm;
     private Object objectDate;
-    private Object objectHeure;
     private boolean firstPassage = true;
     /*****************A modifier suivant les types************************/
     private Object film;
@@ -115,11 +114,6 @@ public class ApplicationFrame extends javax.swing.JFrame {
         });
 
         jComboBoxHeure1.setEnabled(false);
-        jComboBoxHeure1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxHeure1ActionPerformed(evt);
-            }
-        });
 
         jLabelHeure1F.setText("Nouvelle heure de début de la première plage de diffusion  :");
 
@@ -254,18 +248,20 @@ public class ApplicationFrame extends javax.swing.JFrame {
             jComboBoxDate.setEnabled(true);
             jButtonValiderModif.setEnabled(true);
             
-            list = this.ListCategoryToString();
-            i = 0;
-            while(i<list.length){
-                jComboBoxCategories.addItem(list[i]);
-                i++;
-            }
-            
-            list = this.ListDateToString();
-            i = 0;
-            while(i<list.length){
-                jComboBoxDate.addItem(list[i]);
-                i++;
+            if(jComboBoxCategories.getItemCount()==0){
+                list = this.ListCategoryToString();
+                i = 0;
+                while(i<list.length){
+                    jComboBoxCategories.addItem(list[i]);
+                    i++;
+                }
+
+                list = this.ListDateToString();
+                i = 0;
+                while(i<list.length){
+                    jComboBoxDate.addItem(list[i]);
+                    i++;
+                }
             }
         }
     }//GEN-LAST:event_jComboBoxFilmsActionPerformed
@@ -297,18 +293,17 @@ public class ApplicationFrame extends javax.swing.JFrame {
         int i;
         String[] list;
         
-        System.out.println("OK1");
         if(!firstPassage){//une action est produite lors de l'activation, on ne souhaite pas la prendre en compte
             
-                System.out.println("OK2");
             objectDate = jComboBoxDate.getSelectedItem();
             if(objectDate!=null){
                 System.out.println(objectDate);
                 //activation des comboBox
                 jComboBoxHeure1.setEnabled(true);
                 jComboBoxHeure2.setEnabled(true);
-
-                list = this.ListHorairesToString((String) objectFilm);
+                jComboBoxHeure1.removeAllItems();
+                jComboBoxHeure2.removeAllItems();
+                list = this.ListHorairesToString((String) objectDate);
                 i = 0;
                 while(i<list.length){
                     jComboBoxHeure1.addItem(list[i]);
@@ -320,10 +315,6 @@ public class ApplicationFrame extends javax.swing.JFrame {
             firstPassage = false;
         }
     }//GEN-LAST:event_jComboBoxDateActionPerformed
-
-    private void jComboBoxHeure1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHeure1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxHeure1ActionPerformed
 
     /*****************************FONCTIONS PERSO******************************/
     
