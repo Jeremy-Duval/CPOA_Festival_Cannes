@@ -5,8 +5,8 @@
  */
 package mariadbtest;
 
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,16 +21,33 @@ public class MariaDBTest {
      * @param args the command line arguments
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Class.forName( "org.mariadb.jdbc.Driver" );
-        Connection connection = DriverManager.getConnection("jdbc:mariadb://iutdoua-web.univ-lyon1.fr:3306/p1503760?user=p1503760&password=241494");
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
+            // Charge le driver
+            try {
+                Class.forName("org.mariadb.jdbc.Driver"); //oracle.jdbc.driver.OracleDriver ?
+            } catch (Exception e) {
+                System.out.println("Impossible de charger le driver");
+                return;
+            }
+        // Creation et execution d'un ordre SQL
+            // Connexion à la base
+            // Exemple à ne pas suivre : les informations de connexion sont en dur
+            //Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@iutdoua-oracle.univ-lyon1.fr:1521:orcl", "p1501022", "239601"); // Creation et execution d'un ordre SQL
+            Connection conn = ConfigConnection.getConnection("connexion.properties"); // Creation et execution d'un ordre SQL
+            Statement stmt = conn.createStatement();
+            // Récupère les données
+            conn.setAutoCommit(false);
 
-            // Creation et execution d'un ordre SQL
-        Statement stmt = connection.createStatement ();
-        ResultSet rset = stmt.executeQuery ("SELECT * FROM type");
+            ResultSet rset = stmt.executeQuery("SELECT * FROM type;");
 
-        System.out.println("Nom de la colonne : " + rset.getMetaData().getColumnName(1));
+            System.out.println("Nom de la colonne : " + rset.getMetaData().getColumnName(1));
+
+            stmt.close();
+            conn.close();
+
+        
     }
     
 }
