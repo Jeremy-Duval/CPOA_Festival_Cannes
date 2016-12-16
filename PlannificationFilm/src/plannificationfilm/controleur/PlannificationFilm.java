@@ -26,8 +26,8 @@ public class PlannificationFilm {
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
         /********************TEST CONNEXION MANAGER******************************************************/
-        ConnexionManager man = new ConnexionManager();
-            Statement stmt = man.createStatement();
+        ConnexionManager cm = new ConnexionManager();
+            Statement stmt = cm.createStatement();
 
             ResultSet rset = stmt.executeQuery("SELECT * FROM type;");
 

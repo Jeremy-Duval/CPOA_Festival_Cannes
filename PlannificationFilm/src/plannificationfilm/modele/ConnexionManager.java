@@ -8,6 +8,7 @@ package plannificationfilm.modele;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Manager pour initialiser et terminer la connection.
@@ -32,13 +33,16 @@ public class ConnexionManager {
         }
         // Creation et execution d'un ordre SQL
         // Connexion à la base
-        // Exemple à ne pas suivre : les informations de connexion sont en dur
-        //Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@iutdoua-oracle.univ-lyon1.fr:1521:orcl", "p1501022", "239601"); // Creation et execution d'un ordre SQL
         conn = ConfigConnection.getConnection("connexion.properties"); // Creation et execution d'un ordre SQL
         
     }
     
     public void close_connexion() throws SQLException{
         conn.close();
+    }
+
+    public Statement createStatement() throws SQLException {
+        Statement stmt = conn.createStatement();
+        return stmt;
     }
 }

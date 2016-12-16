@@ -32,9 +32,7 @@ public class MariaDBTest {
                 return;
             }
         // Creation et execution d'un ordre SQL
-            // Connexion à la base
-            // Exemple à ne pas suivre : les informations de connexion sont en dur
-            //Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@iutdoua-oracle.univ-lyon1.fr:1521:orcl", "p1501022", "239601"); // Creation et execution d'un ordre SQL
+            // Connexion à la base //Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@iutdoua-oracle.univ-lyon1.fr:1521:orcl", "p1501022", "239601"); // Creation et execution d'un ordre SQL
             Connection conn = ConfigConnection.getConnection("connexion.properties"); // Creation et execution d'un ordre SQL
             Statement stmt = conn.createStatement();
             // Récupère les données
