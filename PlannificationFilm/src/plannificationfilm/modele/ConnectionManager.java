@@ -16,13 +16,29 @@ import java.sql.Statement;
  * @author Jérémy
  * @since 16/12/2016
  */
-public class ConnexionManager {
+public class ConnectionManager {
     Connection conn;
     
-    public ConnexionManager() throws IOException, ClassNotFoundException, SQLException {
+    /**
+     * Initialise la connexion via une fonction.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     * @author Jérémy
+     * @since 16/12/2016
+     */
+    public ConnectionManager() throws IOException, ClassNotFoundException, SQLException {
         this.init_connexion();
     }
     
+    /**
+     * Créer la connexion via une fonction.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     * @author Jérémy
+     * @since 16/12/2016
+     */
     private void init_connexion() throws IOException, ClassNotFoundException, SQLException{
         // Charge le driver
         try {
@@ -37,10 +53,23 @@ public class ConnexionManager {
         
     }
     
+    /**
+     * Ferme la connexion.
+     * @throws SQLException 
+     * @author Jérémy
+     * @since 16/12/2016
+     */
     public void close_connexion() throws SQLException{
         conn.close();
     }
-
+    
+    /**
+     * Créer un Statement
+     * @return stmt : Statement
+     * @throws SQLException 
+     * @author Jérémy
+     * @since 16/12/2016
+     */
     public Statement createStatement() throws SQLException {
         Statement stmt = conn.createStatement();
         return stmt;

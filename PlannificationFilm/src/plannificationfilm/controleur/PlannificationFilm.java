@@ -7,11 +7,13 @@ package plannificationfilm.controleur;
 
 import java.awt.List;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import plannificationfilm.modele.ConnexionManager;
+import plannificationfilm.modele.ConnectionManager;
+import plannificationfilm.modele.ModifyManager;
 import plannificationfilm.vue.ApplicationFrame;
 
 /**
@@ -25,20 +27,13 @@ public class PlannificationFilm {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
-        /********************TEST CONNEXION MANAGER******************************************************/
-        ConnexionManager cm = new ConnexionManager();
-            Statement stmt = cm.createStatement();
-
-            ResultSet rset = stmt.executeQuery("SELECT * FROM type;");
-
-            System.out.println("Nom de la colonne : " + rset.getMetaData().getColumnName(1));
-
-            stmt.close();
-        /*************************************************************************************************/    
-            
-            
-            
         
+        /*************************Initialisation connection*********************/  
+        ConnectionManager cManager = new ConnectionManager();
+        ModifyManager mManager = new ModifyManager(cManager);
+        
+        /*************************Démmarage appli*******************************/ 
+            
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -68,6 +63,8 @@ public class PlannificationFilm {
                 new ApplicationFrame().setVisible(true);
             }
         });
+        
+        cManager.close_connexion();
     }
     
     /**
