@@ -32,6 +32,10 @@ public class PlannificationFilm {
         ConnectionManager cManager = new ConnectionManager();
         ModifyManager mManager = new ModifyManager(cManager);
         
+        //TEST
+        ResultSet rset = mManager.getFilm();
+        System.out.println("Nom de la colonne : " + rset.getMetaData().getColumnName(1));
+        
         /*************************Démmarage appli*******************************/ 
             
         /* Set the Nimbus look and feel */

@@ -32,8 +32,6 @@ public class ModifyManager {
         //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         ResultSet rset = stmt.executeQuery("SELECT * FROM type;");
 
-        System.out.println("Nom de la colonne : " + rset.getMetaData().getColumnName(1));
-
         stmt.close();
 
         return rset;
