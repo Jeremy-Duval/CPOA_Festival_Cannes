@@ -302,7 +302,6 @@ public class ApplicationFrame extends javax.swing.JFrame {
             
             objectDate = jComboBoxDate.getSelectedItem();
             if(objectDate!=null){
-                System.out.println(objectDate);
                 //activation des comboBox
                 jComboBoxHeure1.setEnabled(true);
                 jComboBoxHeure2.setEnabled(true);

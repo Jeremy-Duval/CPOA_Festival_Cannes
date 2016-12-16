@@ -174,6 +174,11 @@ public class PlannificationFilm {
      */
     public static void updatePlannig(String film, String categorie, String date, String heure1, String heure2){
         //update the BD !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+        //link avec modele
+        
+        
+        /***********POUR LES TESTS SANS BD***************/
         System.out.println("*************************************************");
             System.out.println("Film : "+film+"\nCategorie : "+categorie+"\nDate : "+date
                 +"\nDebut première plage horaire : "+heure1+"\nDebut deuxième plage horaire : "+heure2);
