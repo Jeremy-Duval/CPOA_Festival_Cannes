@@ -7,8 +7,10 @@ package plannificationfilm.modele;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 
 /**
  *
@@ -30,10 +32,10 @@ public class ModifyManager {
         Statement stmt = conn.createStatement();
         
         //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        ResultSet rset = stmt.executeQuery("SELECT * FROM type;");
+        ResultSet rset = stmt.executeQuery("SELECT titre FROM films;");
 
         stmt.close();
-
         return rset;
     }
+    
 }

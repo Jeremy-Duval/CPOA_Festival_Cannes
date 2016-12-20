@@ -34,7 +34,8 @@ public class PlannificationFilm {
         
         //TEST
         ResultSet rset = mManager.getFilm();
-        System.out.println("Nom de la colonne : " + rset.getMetaData().getColumnName(1));
+        System.out.println("Film : ");
+        cManager.afficherResultSet(rset);
         
         /*************************Démmarage appli*******************************/ 
             
@@ -68,6 +69,7 @@ public class PlannificationFilm {
             }
         });
         
+        rset.close();
         cManager.close_connexion();
     }
     
