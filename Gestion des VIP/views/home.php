@@ -1,11 +1,11 @@
-<?php $titre="Liste des films référencés";
+<?php $title="Acceuil Gestion des VIP";
 ob_start();
 ?>
 
 
 <!-- Affichage des films de la base de données -->
     <div class="table-title">
-      <h1>Liste des VIP -</h1>
+      <h1 class="inline">Liste des VIP -</h1>
       <h2><?php echo("$count")?> VIP trouvés dans la base de données.</h2>
     </div>
     <table class="table-fill">
@@ -21,7 +21,7 @@ ob_start();
       </thead>
       <tbody class="table-hover">
         <?php
-        foreach ($results as $ligne) {
+        foreach ($vip as $ligne) {
           echo("<tr>");
           foreach ($colnames as $col) {
             echo("<td class='text-center'>".$ligne[$col['COLUMN_NAME']]."</td>");
@@ -30,7 +30,13 @@ ob_start();
         }?>
       </tbody>
     </table>
-
+<div class="groupe_boutton">
+  <a href="index.php?action=ajout" class="bouttonAcceuil">Ajouter</a>
+  <a href="#" class="bouttonAcceuil">Accéder au détail</a>
+  <a href="#" class="bouttonAcceuil">Accés aux échanges</a>
+  <a href="#" class="bouttonAcceuil">Accés aux actions</a>
+  <a href="#" class="bouttonAcceuil">Suppression</a>
+</div>
 <?php
   $content=ob_get_clean();
   require("Views/layout.php");
