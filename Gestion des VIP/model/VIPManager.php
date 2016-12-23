@@ -41,6 +41,18 @@
 
    	}
 
+    public function getCategorie(){
+
+   	        $query = $this->executerRequete('SELECT id,CONCAT(UCASE(LEFT(nom, 1)),SUBSTRING(nom, 2)) as nom FROM categorie'); // requête SQL
+   	        $data = $query->fetchAll(PDO::FETCH_ASSOC);//on récupère un tableau de données
+
+   	        //on libère le curseur
+   	    	$query->closeCursor();
+
+   	    	return $data;
+
+   	}
+
     public function ajoutVIP($prenom,$nom,$importance,$pays,$type,$photo){
 
       $query=$this->executerRequete('SELECT max(id) as nb FROM vip');
@@ -59,6 +71,67 @@
       $query=$this->executerRequete("INSERT INTO sponsor VALUES ('".$id."','".$sponsor."')",array(1));
    	}
 
+    public function ajoutJure($id,$jure){
+      $query=$this->executerRequete("INSERT INTO jures VALUES ('".$id."','".$jure."')",array(1));
+   	}
+
+    public function ajoutPeople($id,$compagnon){
+      $query=$this->executerRequete("INSERT INTO people VALUES ('".$id."','".$compagnon."')",array(1));
+   	}
+
+
+
+    public function getID($prenom,$nom,$importance){
+    $query=$this->executerRequete("SELECT id from vip where prenom ='".$prenom."' and nom='".$nom."' and importance='".$importance."'",array(1));
+    $data=$query->fetch();
+
+     return $data['id'];
+    }
+
+
+    public function getDetail($id){
+      $query = $this->executerRequete("SELECT
+        vip.prenom as prenom,
+        vip.nom as nom,
+        CONCAT(UCASE(LEFT(type.nom, 1)),SUBSTRING(type.nom, 2)) as type,
+        CONCAT(UCASE(LEFT(pays.nom, 1)),SUBSTRING(pays.nom, 2)) as pays,
+        vip.importance as importance
+        FROM vip inner join type on vip.id_type=type.id INNER JOIN pays on vip.id_pays=pays.id where vip.id='".$id."'"); // requête SQL
+      $data = $query->fetchAll(PDO::FETCH_ASSOC);//on récupère un tableau de données
+
+      //on libère le curseur
+      $query->closeCursor();
+
+      return $data[0];
+    }
+
+    public function getCompagnon($id){
+      $query=$this->executerRequete("SELECT nom_compagnon from people where id ='".$id."'",array(1));
+      $data=$query->fetch();
+
+      return $data['nom_compagnon'];
+    }
+
+    public function getCategorieJure($id){
+      $query=$this->executerRequete("SELECT nom_compagnon from people where id ='".$id."'",array(1));
+      $data=$query->fetch();
+
+      return $data['nom_compagnon'];
+    }
+
+    public function getMedia($id){
+      $query=$this->executerRequete("SELECT nom_compagnon from people where id ='".$id."'",array(1));
+      $data=$query->fetch();
+
+      return $data['nom_compagnon'];
+    }
+
+    public function getOrganisation($id){
+      $query=$this->executerRequete("SELECT nom_compagnon from people where id ='".$id."'",array(1));
+      $data=$query->fetch();
+
+      return $data['nom_compagnon'];
+    }
 }
 
 ?>

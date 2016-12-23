@@ -47,6 +47,11 @@
 
       <!--Bouton de validation -->
       <input type="submit" value="Valider" class="button">
+      <?php
+      if($errorFields==true){
+        echo("<p class='erreur'>Veuillez renseigner tout les champs</p>");
+      }
+      ?>
     </form>
   </div>
 </div>

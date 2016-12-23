@@ -1,5 +1,4 @@
 <?php
-session_start();
 require("Model/Model.php");
 require("Model/Manager.php");
 require("Model/VIPManager.php");
@@ -10,6 +9,12 @@ $m = new Manager;
 if (isset($_GET['action']) && ($_GET['action'] == 'ajout')) {
   $pays= $vm->getPays();
   $type = $vm->getType();
+  $errorFields = false;
+  require("Views/ajout_vip.php");
+}else if (isset($_GET['action']) && ($_GET['action'] == 'ajout1')) {
+  $pays= $vm->getPays();
+  $type = $vm->getType();
+  $errorFields = true;
   require("Views/ajout_vip.php");
 }else if(isset($_GET['action']) && ($_GET['action'] == 'vip_sent')){
   // Champs requis
@@ -33,12 +38,14 @@ if (isset($_GET['action']) && ($_GET['action'] == 'ajout')) {
       } else {
           $vipid = $vm->ajoutVIP($_POST['prenom'],$_POST['nom'], $_POST['importance'],$_POST['pays'], $_POST['type'], 0);
       }
+    }else{
+      header("Location: index.php?action=ajout1");
     }
 
-
-    if(($_POST['type']==1) && ($_POST['type']==2)){
+    if(($_POST['type']==1) || ($_POST['type']==2)){
       require("Views/ajout_people.php");
     }else if($_POST['type']==3){
+      $categorie = $vm->getCategorie();
       require("Views/ajout_jure.php");
     }else if($_POST['type']==4){
       require("Views/ajout_journaliste.php");
@@ -52,8 +59,34 @@ if (isset($_GET['action']) && ($_GET['action'] == 'ajout')) {
     $ajout=$vm->ajoutJournaliste($_POST['vipid'],$_POST['media']);
   }else if(isset($_POST['sponsor'])){
     $ajout=$vm->ajoutSponsor($_POST['vipid'],$_POST['sponsor']);
+  }else if(isset($_POST['categorie'])){
+    $ajout=$vm->ajoutJure($_POST['vipid'],$_POST['categorie']);
+  }else if(isset($_POST['compagnon'])){
+    $ajout=$vm->ajoutPeople($_POST['vipid'],$_POST['compagnon']);
   }
   header("Location: index.php");
+}else if(isset($_GET['action']) && ($_GET['action'] == 'detail')){
+  $id=$vm->getID($_POST['prenom'],$_POST['nom'],$_POST['importance']);
+  header("Location: index.php?detail=".$id);
+}else if(isset($_GET['detail'])){
+  $p_id=$_GET['detail'];
+  $detail=$vm->getDetail($p_id);
+  $prenom=$detail['prenom'];
+  $nom=$detail['nom'];
+  $type=$detail['type'];
+  $pays=$detail['pays'];
+  $importance=$detail['importance'];
+  if($type=="Acteur" || $type=="Realisateur"){
+    
+  }else if($type=="Jure"){
+
+  }else if($type=="Journaliste"){
+
+  }else if($type=="Sponsor"){
+
+  }
+  require("Views/detail.php");
+  print_r($detail);
 }else{
   $colnames=$m->getColNames('vip');
   $vip = $vm->getVIP();

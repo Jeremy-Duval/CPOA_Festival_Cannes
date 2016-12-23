@@ -12,6 +12,20 @@ CREATE VIEW infovip AS SELECT
 INSERT INTO vip values ('1','Vin','Diesel')
 
 
+
+
+/* Création de la table catégorie */
+INSERT INTO `categorie`(`id`, `nom`) VALUES ('1','Palme d''Or');
+INSERT INTO `categorie`(`id`, `nom`) VALUES ('2','Grand Prix');
+INSERT INTO `categorie`(`id`, `nom`) VALUES ('3','Prix d''interpretation féminine');
+INSERT INTO `categorie`(`id`, `nom`) VALUES ('4','Prix d''interpretation masculine');
+INSERT INTO `categorie`(`id`, `nom`) VALUES ('5','Prix de la mise en scène');
+INSERT INTO `categorie`(`id`, `nom`) VALUES ('6','Prix du scénario');
+INSERT INTO `categorie`(`id`, `nom`) VALUES ('7','Prix du Jury');
+INSERT INTO `categorie`(`id`, `nom`) VALUES ('8','Prix un certain regard');
+
+
+
 /*Création de la table Pays */
 
 

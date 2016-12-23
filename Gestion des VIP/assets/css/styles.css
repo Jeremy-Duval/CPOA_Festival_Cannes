@@ -60,8 +60,9 @@ div.table-title {
 }
 
 .inline{
-  display:inline-block !important;
+  display:inline-block!important;
 }
+
 .table-title h2,h2 {
   color: #3c4965;
   margin: 0 auto;
@@ -290,6 +291,12 @@ div.table-title {
   text-align: right;
 }
 
+.selected td{
+  background: #6a6cab!important;
+  color: #FFFFFF!important;
+  border-top: 1px solid #22262e!important;
+  border-bottom: 1px solid #22262e!important;
+}
 
 
 /** Header **/
