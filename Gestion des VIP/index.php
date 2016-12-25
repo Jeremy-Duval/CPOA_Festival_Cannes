@@ -77,18 +77,43 @@ if (isset($_GET['action']) && ($_GET['action'] == 'ajout')) {
   $pays=$detail['pays'];
   $importance=$detail['importance'];
   if($type=="Acteur" || $type=="Realisateur"){
-    
+    $compagnon=$vm->getCompagnon($p_id);
   }else if($type=="Jure"){
-
+    $categorie_jure=$vm->getCategorieJure($p_id);
   }else if($type=="Journaliste"){
-
+    $media=$vm->getMedia($p_id);
   }else if($type=="Sponsor"){
-
+    $sponsor=$vm->getOrganisation($p_id);
   }
   require("Views/detail.php");
-  print_r($detail);
+}else if(isset($_GET['action']) && ($_GET['action'] == 'suppression')){
+  $p_id=$vm->getID($_POST['prenom'],$_POST['nom'],$_POST['importance']);
+  $detail=$vm->getDetail($p_id);
+  $type=$detail['type'];
+  if($type=="Acteur" || $type=="Realisateur"){
+    $compagnon=$vm->delPeople($p_id);
+  }else if($type=="Jure"){
+    $categorie_jure=$vm->delJure($p_id);
+  }else if($type=="Journaliste"){
+    $media=$vm->delJournaliste($p_id);
+  }else if($type=="Sponsor"){
+    $sponsor=$vm->delSponsor($p_id);
+  }
+
+  $suppr=$vm->delVIP($p_id);
+  header("Location: index.php");
+}else if(isset($_GET['action']) && ($_GET['action'] == 'echanges')){
+  $id=$vm->getID($_POST['prenom'],$_POST['nom'],$_POST['importance']);
+  header("Location: index.php?echanges=".$id);
+}else if(isset($_GET['echanges'])){
+  $p_id=$_GET['echanges'];
+  $colnames=$m->getColNames('echanges');
+  $colnames=array_slice($colnames,2,3);
+  $echanges=$vm->getEchanges($p_id);
+  $count   = count($echanges);
+  require("Views/echanges.php");
 }else{
-  $colnames=$m->getColNames('vip');
+  $colnames=$m->getColNames('infovip');
   $vip = $vm->getVIP();
   $count   = count($vip);
   require("Views/home.php");
