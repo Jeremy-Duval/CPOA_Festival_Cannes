@@ -8,11 +8,9 @@ package plannificationfilm.controleur;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import plannificationfilm.modele.ConnectionManager;
@@ -226,8 +224,7 @@ public class PlannificationFilm {
         ArrayList listHoraires;
         listHoraires = new ArrayList<>();
         int i;
-
-        //calendar.getInstance();
+        
         /**
          * *********BD**************
          */
@@ -271,16 +268,24 @@ public class PlannificationFilm {
      * @since 14/12/2016
      */
     public static void updatePlannig(String film, String categorie, String date, String heure1, String heure2) {
-        //update the BD !!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        //link avec modele
+        java.sql.Timestamp timestamp1;
+        java.sql.Timestamp timestamp2;
+        ArrayList listHoraires;
+        listHoraires = new ArrayList<>();
+        int i;
+        
         /**
-         * *********POUR LES TESTS SANS BD**************
+         * *********BD**************
          */
-        System.out.println("*************************************************");
-        System.out.println("Film : " + film + "\nCategorie : " + categorie + "\nDate : " + date
-                + "\nDebut première plage horaire : " + heure1 + "\nDebut deuxième plage horaire : " + heure2);
-        System.out.println("*************************************************");
+        ResultSet rset;
+
+        try {
+            rset = mManager.updateBD(categorie, film, timestamp1, timestamp2);
+
+            rset.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlannificationFilm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

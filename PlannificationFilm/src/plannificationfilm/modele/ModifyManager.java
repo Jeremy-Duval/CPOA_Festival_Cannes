@@ -8,6 +8,7 @@ package plannificationfilm.modele;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 
 /**
      * Manager de la partie vue servant à modifier les films.
@@ -90,6 +91,34 @@ public class ModifyManager {
         ResultSet rset;
         try (Statement stmt = conn.createStatement()) {
             rset = stmt.executeQuery("SELECT datetime as day FROM creneaux where id_film = 0 and DAY(datetime) = " + date + " order by day;");
+        }
+        return rset;
+    }
+    
+    /**
+     * Fonction permettant de mettre à jour les crénaux dans la BD ainsi la categorie du film.
+     * @author Jérémy
+     * @param titre_film
+     * @param horaire
+     * @return ResultSet : DateTime : date + horaire disponible pour la date.
+     * @throws java.sql.SQLException : erreur
+     * @since 16/12/2016
+     */
+    public ResultSet updateBD(String categorie, String titre_film, Timestamp horaire1, Timestamp horaire2) throws SQLException {
+        ResultSet rset;
+        try (Statement stmt = conn.createStatement()) {
+            /************************film's category's update*************************/
+            rset = stmt.executeQuery("UPDATE `films` SET `id_categorie`= "
+                    + "(SELECT id FROM `categorie` WHERE nom = "+categorie+") WHERE titre = 'Star Wars 191'");
+            /************************film's time slot update**************************/
+            rset = stmt.executeQuery("UPDATE `creneaux` SET `id_film`= 0 WHERE "
+                    + "(SELECT DISTINCT id FROM films WHERE titre = "+ titre_film+");");
+            rset = stmt.executeQuery("UPDATE `creneaux` SET `id_film`= "
+                    + "(SELECT DISTINCT id FROM films WHERE titre = "+ titre_film+")"
+                    + " WHERE `datetime`= "+horaire1+";");
+            rset = stmt.executeQuery("UPDATE `creneaux` SET `id_film`= "
+                    + "(SELECT DISTINCT id FROM films WHERE titre = "+ titre_film+")"
+                    + " WHERE `datetime`= "+horaire2+";");
         }
         return rset;
     }
