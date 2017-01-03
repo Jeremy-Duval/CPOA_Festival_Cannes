@@ -5,13 +5,13 @@
  */
 package plannificationfilm.controleur;
 
-import java.awt.List;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import plannificationfilm.modele.ConnectionManager;
@@ -26,9 +26,14 @@ import plannificationfilm.vue.ApplicationFrame;
 public class PlannificationFilm {
     /****************************BD**************************/
     private static int colonne_film = 1;
+    private static int colonne_category = 2;
+    private static int colonne_datetime = 1;
     /*************************Connection*********************/
     private static ConnectionManager cManager;
     private static ModifyManager mManager;
+    /*************************Génériques********************/
+    private static DateFormat day_format = new SimpleDateFormat("dd");
+    private static DateFormat hour_format = new SimpleDateFormat("HHmm");
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
@@ -117,16 +122,24 @@ public class PlannificationFilm {
     public static ArrayList getCategory(){
         ArrayList listCategory;
         listCategory = new ArrayList<>();
+        int i;
+
+        /***********BD***************/
+        ResultSet rset;
         
-        //link avec modele
+        try {
+            rset = mManager.getCategory();
         
-        
-        /***********POUR LES TESTS SANS BD***************/
-        
-        listCategory.add(0,"Compétition");
-        listCategory.add(1,"Hors Compétition");
-        listCategory.add(2,"Coup de coeur");
-        
+            i = 0;
+            while (rset.next()) {
+                listCategory.add(i,rset.getString(colonne_category));
+                i++;
+            }
+            
+            rset.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlannificationFilm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         /***********************************************/
         
         return listCategory;
@@ -139,20 +152,29 @@ public class PlannificationFilm {
      * @since 14/12/2016
      */
     public static ArrayList getDate(){
+        java.util.Date date = new java.util.Date();
         ArrayList listDate;
         listDate = new ArrayList<>();
+        int i;
         
-        //link avec modele
+        /***********BD***************/
+        ResultSet rset;
         
+        try {
+            rset = mManager.getDay();
         
-        /***********POUR LES TESTS SANS BD***************/
-        listDate.add(0,"8");
-        listDate.add(1,"9");
-        listDate.add(2,"10");
-        listDate.add(3,"12");
-        listDate.add(4,"14");
-        listDate.add(5,"15");
-        
+            i = 0;
+            while (rset.next()) {
+                //date = Calendar.getInstance().getTime();
+                date = rset.getDate(colonne_datetime);
+                listDate.add(i,day_format.format(date));
+                i++;
+            }
+            
+            rset.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlannificationFilm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         /***********************************************/
         
         return listDate;

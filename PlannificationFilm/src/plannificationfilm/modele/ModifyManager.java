@@ -42,7 +42,17 @@ public class ModifyManager {
         Statement stmt = conn.createStatement();
         
         //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        ResultSet rset = stmt.executeQuery("SELECT titre FROM films;");
+        ResultSet rset = stmt.executeQuery("SELECT * FROM categorie;");
+
+        stmt.close();
+        return rset;
+    }
+    
+    public ResultSet getDay() throws SQLException{
+        Statement stmt = conn.createStatement();
+        
+        //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ResultSet rset = stmt.executeQuery("SELECT DATE(datetime) FROM creneaux;");
 
         stmt.close();
         return rset;
