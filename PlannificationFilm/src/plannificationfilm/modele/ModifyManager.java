@@ -38,4 +38,14 @@ public class ModifyManager {
         return rset;
     }
     
+    public ResultSet getCategory() throws SQLException{
+        Statement stmt = conn.createStatement();
+        
+        //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ResultSet rset = stmt.executeQuery("SELECT titre FROM films;");
+
+        stmt.close();
+        return rset;
+    }
+    
 }

@@ -79,7 +79,7 @@ public class ConnectionManager {
     }
     
     /**
-     * Affiche le resultSet
+     * Affiche le resultSet. Permet de tester les retours de requêtes dans l'IDE.
      * @param rset : ResultSet : requete à afficher
      * @throws SQLException 
      * @author Jérémy
@@ -87,7 +87,6 @@ public class ConnectionManager {
      */
     public void afficherResultSet(ResultSet rset) throws SQLException {
         ResultSetMetaData rsmd = rset.getMetaData();//récupère les méta données de la table
-        System.out.println(rset.next());
         while (rset.next()) {//on parcours chaque ligne
             System.out.println("*********************************************");
             int i = 1;//une table commence à 1 et non 0

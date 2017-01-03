@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import plannificationfilm.modele.ConnectionManager;
 import plannificationfilm.modele.ModifyManager;
 import plannificationfilm.vue.ApplicationFrame;
@@ -22,20 +24,22 @@ import plannificationfilm.vue.ApplicationFrame;
  * @since 12/12/2016
  */
 public class PlannificationFilm {
-
+    /****************************BD**************************/
+    private static int colonne_film = 1;
+    /*************************Connection*********************/
+    private static ConnectionManager cManager;
+    private static ModifyManager mManager;
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
         
         /*************************Initialisation connection*********************/  
-        ConnectionManager cManager = new ConnectionManager();
-        ModifyManager mManager = new ModifyManager(cManager);
-        
-        //TEST
-        ResultSet rset = mManager.getFilm();
-        System.out.println("Film : ");
-        cManager.afficherResultSet(rset);
+        cManager = new ConnectionManager();
+        mManager = new ModifyManager(cManager);
         
         /*************************Démmarage appli*******************************/ 
             
@@ -69,29 +73,36 @@ public class PlannificationFilm {
             }
         });
         
-        rset.close();
-        cManager.close_connexion();
     }
     
     /**
      * Récupère la liste des films depuis la fonction modele et l'envoi à la vue.
      * @return listHoraires : ArrayList
      * @author Jérémy
+     * @throws java.sql.SQLException
      * @since 14/12/2016
      */
-    public static ArrayList getFilm(){
+    public static ArrayList getFilm() {
         ArrayList listFilm;
         listFilm = new ArrayList<>();
+        int i;
         
-        //link avec modele
+        /***********BD***************/
+        ResultSet rset;
         
+        try {
+            rset = mManager.getFilm();
         
-        /***********POUR LES TESTS SANS BD***************/
-        
-        listFilm.add(0,"Star Wars");
-        listFilm.add(1,"Blade");
-        listFilm.add(2,"Pulp Fiction");
-        
+            i = 0;
+            while (rset.next()) {
+                listFilm.add(i,rset.getString(colonne_film));
+                i++;
+            }
+            
+            rset.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlannificationFilm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         /***********************************************/
         
         return listFilm;
@@ -103,7 +114,7 @@ public class PlannificationFilm {
      * @author Jérémy
      * @since 14/12/2016
      */
-    public static ArrayList getCategorie(){
+    public static ArrayList getCategory(){
         ArrayList listCategory;
         listCategory = new ArrayList<>();
         
