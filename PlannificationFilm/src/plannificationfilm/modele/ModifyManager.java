@@ -48,11 +48,20 @@ public class ModifyManager {
         return rset;
     }
     
-    public ResultSet getDay() throws SQLException{
+    public ResultSet getDate() throws SQLException{
         Statement stmt = conn.createStatement();
         
         //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         ResultSet rset = stmt.executeQuery("SELECT distinct DATE(datetime) as day FROM creneaux where id_film = 0 order by day;");
+
+        stmt.close();
+        return rset;
+    }
+    
+    public ResultSet getHours(int date) throws SQLException{
+        Statement stmt = conn.createStatement();
+        //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ResultSet rset = stmt.executeQuery("SELECT distinct HOUR(datetime) as day FROM creneaux where id_film = 0 and DAY(datetime) = " + date + " order by day;");
 
         stmt.close();
         return rset;

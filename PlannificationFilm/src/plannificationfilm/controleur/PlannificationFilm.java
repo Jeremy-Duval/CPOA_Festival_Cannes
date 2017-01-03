@@ -33,7 +33,7 @@ public class PlannificationFilm {
     private static ModifyManager mManager;
     /*************************Génériques********************/
     private static DateFormat day_format = new SimpleDateFormat("dd");
-    private static DateFormat hour_format = new SimpleDateFormat("HHmm");
+    private static DateFormat hour_format = new SimpleDateFormat("hh");
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
@@ -155,14 +155,13 @@ public class PlannificationFilm {
         java.util.Date date = new java.util.Date();
         ArrayList listDate;
         listDate = new ArrayList<>();
-        boolean exist = false;
         int i;
         
         /***********BD***************/
         ResultSet rset;
         
         try {
-            rset = mManager.getDay();
+            rset = mManager.getDate();
         
             i = 0;
             while (rset.next()) {
@@ -189,30 +188,30 @@ public class PlannificationFilm {
      * @author Jérémy
      * @since 14/12/2016
      */
-    public static ArrayList getHoraires(String date){
+    public static ArrayList getHoraires(String day){
+        java.util.Date date = new java.util.Date();
         ArrayList listHoraires;
         listHoraires = new ArrayList<>();
+        int i;
         
-        //link avec modele
+        /***********BD***************/
+        ResultSet rset;
         
+        try {
+            rset = mManager.getHours(Integer.parseInt(day));
         
-        /***********POUR LES TESTS SANS BD***************/
-        if(date.equals("8")){
-                listHoraires.add(0,"10");
-                listHoraires.add(1,"11");
-        }else if(date.equals("10")){
-                listHoraires.add(0,"20");
-                listHoraires.add(1,"22");
-        } else {
-                listHoraires.add(0,"10");
-                listHoraires.add(1,"12");
-                listHoraires.add(2,"14");
-                listHoraires.add(3,"15");
-                listHoraires.add(4,"20");
-                listHoraires.add(5,"22");
+            i = 0;
+            while (rset.next()) {
+                //date = Calendar.getInstance().getTime();
+                date = rset.getDate(colonne_datetime);
+                listHoraires.add(i,hour_format.format(date));
+                i++;
+            }
+            
+            rset.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlannificationFilm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
         /***********************************************/
         
         return listHoraires;
