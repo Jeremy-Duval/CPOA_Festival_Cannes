@@ -61,7 +61,7 @@ public class ModifyManager {
     public ResultSet getHours(int date) throws SQLException{
         Statement stmt = conn.createStatement();
         //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        ResultSet rset = stmt.executeQuery("SELECT distinct HOUR(datetime) as day FROM creneaux where id_film = 0 and DAY(datetime) = " + date + " order by day;");
+        ResultSet rset = stmt.executeQuery("SELECT datetime as day FROM creneaux where id_film = 0 and DAY(datetime) = " + date + " order by day;");
 
         stmt.close();
         return rset;

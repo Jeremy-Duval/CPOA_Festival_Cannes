@@ -8,6 +8,7 @@ package plannificationfilm.controleur;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class PlannificationFilm {
     private static ModifyManager mManager;
     /*************************Génériques********************/
     private static DateFormat day_format = new SimpleDateFormat("dd");
-    private static DateFormat hour_format = new SimpleDateFormat("hh");
+    private static DateFormat hour_format = new SimpleDateFormat("HH");
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
@@ -190,10 +191,12 @@ public class PlannificationFilm {
      */
     public static ArrayList getHoraires(String day){
         java.util.Date date = new java.util.Date();
+        java.sql.Timestamp timestamp;
         ArrayList listHoraires;
         listHoraires = new ArrayList<>();
         int i;
         
+        //calendar.getInstance();
         /***********BD***************/
         ResultSet rset;
         
@@ -203,8 +206,12 @@ public class PlannificationFilm {
             i = 0;
             while (rset.next()) {
                 //date = Calendar.getInstance().getTime();
-                date = rset.getDate(colonne_datetime);
-                listHoraires.add(i,hour_format.format(date));
+                /*
+                calendar.setTime(rset.getDate(colonne_datetime));
+                listHoraires.add(i,hour_format.format(calendar.getTime()));
+                */
+                timestamp = rset.getTimestamp(colonne_datetime);
+                listHoraires.add(i,hour_format.format(timestamp));
                 i++;
             }
             
