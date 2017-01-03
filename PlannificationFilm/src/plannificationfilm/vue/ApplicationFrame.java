@@ -121,7 +121,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         jComboBoxHeure2.setEnabled(false);
 
-        jLabelHeure2F.setText("Nouvelle heure de début de la première plage de diffusion  :");
+        jLabelHeure2F.setText("Nouvelle heure de début de la deuxième plage de diffusion  :");
 
         jButtonValiderModif.setText("Valider");
         jButtonValiderModif.setEnabled(false);

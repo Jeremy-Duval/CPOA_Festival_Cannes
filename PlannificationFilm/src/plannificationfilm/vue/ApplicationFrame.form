@@ -269,7 +269,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelHeure2F">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nouvelle heure de d&#xe9;but de la premi&#xe8;re plage de diffusion  :"/>
+                <Property name="text" type="java.lang.String" value="Nouvelle heure de d&#xe9;but de la deuxi&#xe8;me plage de diffusion  :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
