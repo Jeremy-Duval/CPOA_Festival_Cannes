@@ -52,7 +52,7 @@ public class ModifyManager {
         Statement stmt = conn.createStatement();
         
         //A CHANGER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        ResultSet rset = stmt.executeQuery("SELECT DATE(datetime) FROM creneaux;");
+        ResultSet rset = stmt.executeQuery("SELECT distinct DATE(datetime) as day FROM creneaux where id_film = 0 order by day;");
 
         stmt.close();
         return rset;

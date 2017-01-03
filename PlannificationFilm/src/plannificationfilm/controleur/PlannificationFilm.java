@@ -155,6 +155,7 @@ public class PlannificationFilm {
         java.util.Date date = new java.util.Date();
         ArrayList listDate;
         listDate = new ArrayList<>();
+        boolean exist = false;
         int i;
         
         /***********BD***************/
