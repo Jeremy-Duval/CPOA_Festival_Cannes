@@ -14,35 +14,39 @@ import java.sql.Statement;
 import java.sql.Types;
 
 /**
- * Manager pour initialiser et terminer la connection.
- * A appeler en début, on transmettera l'objet Connexion aux autres managers.
+ * Manager pour initialiser et terminer la connection. A appeler en début, on
+ * transmettera l'objet Connexion aux autres managers.
+ *
  * @author Jérémy
  * @since 16/12/2016
  */
 public class ConnectionManager {
+
     Connection conn;
-    
+
     /**
      * Initialise la connexion via une fonction.
-     * @throws IOException
-     * @throws ClassNotFoundException
-     * @throws SQLException 
+     *
+     * @throws IOException : erreur
+     * @throws ClassNotFoundException : erreur
+     * @throws SQLException : erreur
      * @author Jérémy
      * @since 16/12/2016
      */
     public ConnectionManager() throws IOException, ClassNotFoundException, SQLException {
         this.init_connexion();
     }
-    
+
     /**
      * Créer la connexion via une fonction.
-     * @throws IOException
-     * @throws ClassNotFoundException
-     * @throws SQLException 
+     *
+     * @throws IOException : erreur
+     * @throws ClassNotFoundException : erreur
+     * @throws SQLException : erreur
      * @author Jérémy
      * @since 16/12/2016
      */
-    private void init_connexion() throws IOException, ClassNotFoundException, SQLException{
+    private void init_connexion() throws IOException, ClassNotFoundException, SQLException {
         // Charge le driver
         try {
             Class.forName("org.mariadb.jdbc.Driver"); //oracle.jdbc.driver.OracleDriver ?
@@ -53,23 +57,25 @@ public class ConnectionManager {
         // Creation et execution d'un ordre SQL
         // Connexion à la base
         conn = ConfigConnection.getConnection("connexion.properties"); // Creation et execution d'un ordre SQL
-        
+
     }
-    
+
     /**
      * Ferme la connexion.
-     * @throws SQLException 
+     *
+     * @throws SQLException : erreur
      * @author Jérémy
      * @since 16/12/2016
      */
-    public void close_connexion() throws SQLException{
+    public void close_connexion() throws SQLException {
         conn.close();
     }
-    
+
     /**
      * Créer un Statement
+     *
      * @return stmt : Statement
-     * @throws SQLException 
+     * @throws SQLException : erreur
      * @author Jérémy
      * @since 16/12/2016
      */
@@ -77,11 +83,13 @@ public class ConnectionManager {
         Statement stmt = conn.createStatement();
         return stmt;
     }
-    
+
     /**
-     * Affiche le resultSet. Permet de tester les retours de requêtes dans l'IDE.
+     * Affiche le resultSet. Permet de tester les retours de requêtes dans
+     * l'IDE.
+     *
      * @param rset : ResultSet : requete à afficher
-     * @throws SQLException 
+     * @throws SQLException : erreur
      * @author Jérémy
      * @since 16/12/2016
      */
