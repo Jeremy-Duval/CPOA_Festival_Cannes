@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -268,8 +269,6 @@ public class PlannificationFilm {
      * @since 14/12/2016
      */
     public static void updatePlannig(String film, String categorie, String date, String heure1, String heure2) {
-        java.sql.Timestamp timestamp1;
-        java.sql.Timestamp timestamp2;
         ArrayList listHoraires;
         listHoraires = new ArrayList<>();
         int i;
@@ -278,9 +277,9 @@ public class PlannificationFilm {
          * *********BD**************
          */
         ResultSet rset;
-
+        
         try {
-            rset = mManager.updateBD(categorie, film, timestamp1, timestamp2);
+            rset = mManager.updateBD(categorie, film, date, heure1, heure2);
 
             rset.close();
         } catch (SQLException ex) {
