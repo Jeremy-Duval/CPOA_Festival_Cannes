@@ -65,15 +65,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
             new String [] {
                 "Date", "Compétition", "Hors compétition", "Un Certain Regard", "Cannes classics", "Courts métrages"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         jTable1.setToolTipText("");
         jTable1.setName(""); // NOI18N
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {

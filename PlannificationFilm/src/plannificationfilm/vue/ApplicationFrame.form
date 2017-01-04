@@ -97,7 +97,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="6" rowCount="7">
-                        <Column editable="true" title="Date" type="java.lang.Integer"/>
+                        <Column editable="true" title="Date" type="java.lang.Object"/>
                         <Column editable="true" title="Comp&#xe9;tition" type="java.lang.Object"/>
                         <Column editable="true" title="Hors comp&#xe9;tition" type="java.lang.Object"/>
                         <Column editable="true" title="Un Certain Regard" type="java.lang.Object"/>
