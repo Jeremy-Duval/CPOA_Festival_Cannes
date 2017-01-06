@@ -41,7 +41,7 @@ public class ModifyManager {
     public ResultSet getFilm() throws SQLException {
         ResultSet rset;
         try (Statement stmt = conn.createStatement()) {
-            rset = stmt.executeQuery("SELECT titre FROM films;");
+            rset = stmt.executeQuery("SELECT DISTINCT titre FROM films JOIN creneaux ON films.id = creneaux.id_film;");
         }
         return rset;
     }
