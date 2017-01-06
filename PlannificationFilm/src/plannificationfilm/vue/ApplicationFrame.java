@@ -19,9 +19,12 @@ public class ApplicationFrame extends javax.swing.JFrame {
     /**
      * ***************Variables de test générique************************
      */
-    private Object objectFilm = null;
-    private Object objectDate = null;
-    private boolean firstPassage = true;
+    private Object objectFilmModif = null;
+    private Object objectDateModif = null;
+    private boolean firstPassageModif = true;
+    private Object objectFilmAjout = null;
+    private Object objectDateAjout = null;
+    private boolean firstPassageAjout = true;
     /**
      * ***************A modifier suivant les types***********************
      */
@@ -135,6 +138,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jComboBoxCatFilmAj.setEnabled(false);
 
         jComboBoxDateAj.setEnabled(false);
+        jComboBoxDateAj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDateAjActionPerformed(evt);
+            }
+        });
 
         jComboBoxHeure2Aj.setEnabled(false);
 
@@ -373,8 +381,8 @@ public class ApplicationFrame extends javax.swing.JFrame {
         int i;
         String[] list;
 
-        objectFilm = jComboBoxFilms.getSelectedItem();
-        if (objectFilm != null) {
+        objectFilmModif = jComboBoxFilms.getSelectedItem();
+        if (objectFilmModif != null) {
             //activation des comboBox et bouton "valider"
             jComboBoxCategories.setEnabled(true);
             jComboBoxDate.setEnabled(true);
@@ -401,17 +409,17 @@ public class ApplicationFrame extends javax.swing.JFrame {
         int i;
         String[] list;
 
-        if (!firstPassage) {//une action est produite lors de l'activation, on ne souhaite pas la prendre en compte
+        if (!firstPassageModif) {//une action est produite lors de l'activation, on ne souhaite pas la prendre en compte
 
-            objectDate = jComboBoxDate.getSelectedItem();
-            if (objectDate != null) {
+            objectDateModif = jComboBoxDate.getSelectedItem();
+            if (objectDateModif != null) {
                 //activation des comboBox
                 jComboBoxHeure1.setEnabled(true);
                 jComboBoxHeure2.setEnabled(true);
                 jComboBoxHeure1.removeAllItems();
                 jComboBoxHeure2.removeAllItems();
                 jButtonValiderModif.setEnabled(true);
-                list = this.ListHorairesToString((String) objectDate);
+                list = this.ListHorairesToString((String) objectDateModif);
                 i = 0;
                 while (i < list.length) {
                     jComboBoxHeure1.addItem(list[i]);
@@ -420,7 +428,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 }
             }
         } else {
-            firstPassage = false;
+            firstPassageModif = false;
         }
     }//GEN-LAST:event_jComboBoxDateActionPerformed
 
@@ -480,8 +488,8 @@ public class ApplicationFrame extends javax.swing.JFrame {
         int i;
         String[] list;
 
-        objectFilm = jComboBoxSelFilmAj.getSelectedItem();
-        if (objectFilm != null) {
+        objectFilmAjout = jComboBoxSelFilmAj.getSelectedItem();
+        if (objectFilmAjout != null) {
             //activation des comboBox et bouton "valider"
             jComboBoxCatFilmAj.setEnabled(true);
             jComboBoxDateAj.setEnabled(true);
@@ -503,6 +511,34 @@ public class ApplicationFrame extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jComboBoxSelFilmAjActionPerformed
+
+    private void jComboBoxDateAjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDateAjActionPerformed
+        int i;
+        String[] list;
+        
+        objectDateAjout = jComboBoxDateAj.getSelectedItem();
+        if (!firstPassageAjout) {//une action est produite lors de l'activation, on ne souhaite pas la prendre en compte
+
+                //activation des comboBox
+            if (objectDateAjout != null) {
+                //activation des comboBox
+                jComboBoxHeure1Aj.setEnabled(true);
+                jComboBoxHeure2Aj.setEnabled(true);
+                jComboBoxHeure1Aj.removeAllItems();
+                jComboBoxHeure2Aj.removeAllItems();
+                jButtonValiderAj.setEnabled(true);
+                list = this.ListHorairesToString((String) objectDateAjout);
+                i = 0;
+                while (i < list.length) {
+                    jComboBoxHeure1Aj.addItem(list[i]);
+                    jComboBoxHeure2Aj.addItem(list[i]);
+                    i++;
+                }
+            }
+        } else {
+            firstPassageAjout = false;
+        }
+    }//GEN-LAST:event_jComboBoxDateAjActionPerformed
 
     /**
      * ***************************FONCTIONS PERSO*****************************
@@ -528,9 +564,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jComboBoxHeure2.setEnabled(false);
         jButtonValiderModif.setEnabled(false);
         //réinitilisation des variables de test générique
-        objectFilm = null;
-        objectDate = null;
-        firstPassage = true;
+        objectFilmModif = null;
+        objectDateModif = null;
+        firstPassageModif = true;
     }
     
     /**
@@ -554,9 +590,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jComboBoxHeure2Aj.setEnabled(false);
         jButtonValiderAj.setEnabled(false);
         //réinitilisation des variables de test générique
-        objectFilm = null;
-        objectDate = null;
-        firstPassage = true;
+        objectFilmAjout = null;
+        objectDateAjout = null;
+        firstPassageAjout = true;
     }
 
     /**
