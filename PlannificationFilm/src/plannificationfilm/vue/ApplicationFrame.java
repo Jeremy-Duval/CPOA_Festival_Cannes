@@ -109,13 +109,36 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jLabelHeure2Aj.setText("Heure de début de ladeuxième plage de diffusion  :");
 
         jButtonValiderAj.setText("Valider");
+        jButtonValiderAj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonValiderAjActionPerformed(evt);
+            }
+        });
 
         jButtonAnnulerAj.setText("Annuler");
+        jButtonAnnulerAj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnnulerAjActionPerformed(evt);
+            }
+        });
 
         // Code adding the component to the parent container - not shown here
         //on récupère la liste des films :
         String[] listFilmsToAdd = this.ListFilmToAddToString();
         jComboBoxSelFilmAj.setModel(new javax.swing.DefaultComboBoxModel(listFilmsToAdd));
+        jComboBoxSelFilmAj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSelFilmAjActionPerformed(evt);
+            }
+        });
+
+        jComboBoxCatFilmAj.setEnabled(false);
+
+        jComboBoxDateAj.setEnabled(false);
+
+        jComboBoxHeure2Aj.setEnabled(false);
+
+        jComboBoxHeure1Aj.setEnabled(false);
 
         javax.swing.GroupLayout jPanelAjoutLayout = new javax.swing.GroupLayout(jPanelAjout);
         jPanelAjout.setLayout(jPanelAjoutLayout);
@@ -355,7 +378,6 @@ public class ApplicationFrame extends javax.swing.JFrame {
             //activation des comboBox et bouton "valider"
             jComboBoxCategories.setEnabled(true);
             jComboBoxDate.setEnabled(true);
-            jButtonValiderModif.setEnabled(true);
 
             if (jComboBoxCategories.getItemCount() == 0) {
                 list = this.ListCategoryToString();
@@ -388,6 +410,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
                 jComboBoxHeure2.setEnabled(true);
                 jComboBoxHeure1.removeAllItems();
                 jComboBoxHeure2.removeAllItems();
+                jButtonValiderModif.setEnabled(true);
                 list = this.ListHorairesToString((String) objectDate);
                 i = 0;
                 while (i < list.length) {
@@ -427,12 +450,66 @@ public class ApplicationFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAnnulerModifActionPerformed
 
+    private void jButtonValiderAjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderAjActionPerformed
+        film = jComboBoxSelFilmAj.getSelectedItem();
+        categorie = jComboBoxCatFilmAj.getSelectedItem();
+        date = jComboBoxDateAj.getSelectedItem();
+        heure1 = jComboBoxHeure1Aj.getSelectedItem();
+        heure2 = jComboBoxHeure2Aj.getSelectedItem();
+
+        if (heure1 == heure2) { //on test si les plages horaires ne sont pas les mêmes
+            JOptionPane.showMessageDialog(this, "Vous ne pouvez pas selectionner deux fois la même plage horaire !", "Attention", JOptionPane.WARNING_MESSAGE);
+        } else {
+            //update de la bd :
+            PlannificationFilm.updatePlannig((String) film, (String) categorie, (String) date, (String) heure1, (String) heure2);
+            //reinitialisation modifcation
+            reinit_modifier_film();
+            jTabbedPaneMenu.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jButtonValiderAjActionPerformed
+
+    private void jButtonAnnulerAjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerAjActionPerformed
+        if (!jButtonValiderAj.isEnabled()) { // retour sur calendrier
+            jTabbedPaneMenu.setSelectedIndex(0);
+        } else { //annulation selection film
+            reinit_ajout_film();
+        }
+    }//GEN-LAST:event_jButtonAnnulerAjActionPerformed
+
+    private void jComboBoxSelFilmAjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelFilmAjActionPerformed
+        int i;
+        String[] list;
+
+        objectFilm = jComboBoxSelFilmAj.getSelectedItem();
+        if (objectFilm != null) {
+            //activation des comboBox et bouton "valider"
+            jComboBoxCatFilmAj.setEnabled(true);
+            jComboBoxDateAj.setEnabled(true);
+
+            if (jComboBoxCatFilmAj.getItemCount() == 0) {
+                list = this.ListCategoryToString();
+                i = 0;
+                while (i < list.length) {
+                    jComboBoxCatFilmAj.addItem(list[i]);
+                    i++;
+                }
+
+                list = this.ListDateToString();
+                i = 0;
+                while (i < list.length) {
+                    jComboBoxDateAj.addItem(list[i]);
+                    i++;
+                }
+            }
+        }
+    }//GEN-LAST:event_jComboBoxSelFilmAjActionPerformed
+
     /**
      * ***************************FONCTIONS PERSO*****************************
      */
     /**
      * Permet de remettre les combo box et le bouton "valider" à leur état
-     * initial.
+     * initial pour la partie "Modifier" des films.
      *
      * @author Jérémy
      * @since 13/12/2016
@@ -450,6 +527,32 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jComboBoxHeure1.setEnabled(false);
         jComboBoxHeure2.setEnabled(false);
         jButtonValiderModif.setEnabled(false);
+        //réinitilisation des variables de test générique
+        objectFilm = null;
+        objectDate = null;
+        firstPassage = true;
+    }
+    
+    /**
+     * Permet de remettre les combo box et le bouton "valider" à leur état
+     * initial pour la partie "Ajout" des films.
+     *
+     * @author Jérémy
+     * @since 13/12/2016
+     */
+    private void reinit_ajout_film() {
+        //remise à 0 de la selection de film et vidage des combo box
+        jComboBoxSelFilmAj.setSelectedIndex(0);
+        jComboBoxCatFilmAj.removeAllItems();
+        jComboBoxDateAj.removeAllItems();
+        jComboBoxHeure1Aj.removeAllItems();
+        jComboBoxHeure2Aj.removeAllItems();
+        //remise des boutons et comboBox à disable
+        jComboBoxCatFilmAj.setEnabled(false);
+        jComboBoxDateAj.setEnabled(false);
+        jComboBoxHeure1Aj.setEnabled(false);
+        jComboBoxHeure2Aj.setEnabled(false);
+        jButtonValiderAj.setEnabled(false);
         //réinitilisation des variables de test générique
         objectFilm = null;
         objectDate = null;
@@ -483,10 +586,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
      */
     private String[] ListFilmToAddToString() {
         ArrayList listFilmArray;
-        //listFilmArray = PlannificationFilm.getFilmToAdd();
-        String[] listFilmString = {"bwa","yo"};
+        listFilmArray = PlannificationFilm.getFilmToAdd();
 
-        //String listFilmString[] = this.ArrayListToString(listFilmArray);
+        String listFilmString[] = this.ArrayListToString(listFilmArray);
 
         return listFilmString;
     }

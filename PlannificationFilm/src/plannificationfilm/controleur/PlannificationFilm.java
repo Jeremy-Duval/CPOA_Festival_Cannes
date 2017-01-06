@@ -286,5 +286,43 @@ public class PlannificationFilm {
             Logger.getLogger(PlannificationFilm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Récupère la liste des films n'ayant pas de crénaux depuis la fonction 
+     * modele et l'envoi à la vue.
+     *
+     * @return listHoraires : ArrayList
+     * @author Jérémy
+     * @since 14/12/2016
+     */
+    public static ArrayList getFilmToAdd() {
+        ArrayList listFilm;
+        listFilm = new ArrayList<>();
+        int i;
+
+        /**
+         * *********BD**************
+         */
+        ResultSet rset;
+
+        try {
+            rset = mManager.getFilmToAdd();
+
+            i = 0;
+            while (rset.next()) {
+                listFilm.add(i, rset.getString(colonne_film));
+                i++;
+            }
+
+            rset.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlannificationFilm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        /**
+         * ********************************************
+         */
+
+        return listFilm;
+    }
 
 }

@@ -45,6 +45,22 @@ public class ModifyManager {
         }
         return rset;
     }
+    
+    /**
+     * Fonction permettant de récupérer la liste des films.
+     *
+     * @author Jérémy
+     * @return ResultSet : VARCHAR : liste des films
+     * @throws java.sql.SQLException : erreur
+     * @since 16/12/2016
+     */
+    public ResultSet getFilmToAdd() throws SQLException {
+        ResultSet rset;
+        try (Statement stmt = conn.createStatement()) {
+            rset = stmt.executeQuery("SELECT titre FROM films WHERE id not in (SELECT id_film FROM creneaux);");
+        }
+        return rset;
+    }
 
     /**
      * Fonction permettant de récupérer lles catégories de films.
