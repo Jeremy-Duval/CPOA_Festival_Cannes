@@ -115,7 +115,7 @@ public class ModifyManager {
                     + "(SELECT DISTINCT id FROM categorie WHERE nom = '"+categorie+"') WHERE titre = '"+titre_film+"';");
             /************************film's time slot update**************************/
             rset = stmt.executeQuery("UPDATE `creneaux` SET `id_film`= 0 WHERE "
-                    + "(SELECT DISTINCT id FROM films WHERE titre = '"+titre_film+"');");
+                    + "id_film = (SELECT DISTINCT id FROM films WHERE titre = '"+titre_film+"');");
             rset = stmt.executeQuery("UPDATE `creneaux` SET `id_film`= "
                     + "(SELECT DISTINCT id FROM films WHERE titre = '"+titre_film+"')"
                     + " WHERE DAY(`datetime`)= "+date+" AND HOUR(`datetime`) = "+horaire1+";");
