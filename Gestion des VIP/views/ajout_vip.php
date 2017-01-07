@@ -9,12 +9,12 @@
     <form enctype="multipart/form-data" action="index.php?action=vip_sent" method="post" class="login-form" id="ajout_vip">
 
       <!--Nom et prénom -->
-      <input type="text" name="prenom" placeholder="Entrer le prenom"><br>
-      <input type="text" name="nom" placeholder="Entrer le nom"><br>
+      <input type="text" name="prenom" placeholder="Entrer le prenom" required><br>
+      <input type="text" name="nom" placeholder="Entrer le nom" required><br>
 
       <!--Importance -->
-      <label for="importance" id="importance-label">Selectionner importance: <output for="importance" id="importance_valeur">0</output>
-      <input name="importance" id="importance" type ="range" min ="0" max="100" step ="1" value="0" oninput="outputUpdate(value)"/></label>
+      <label for="importance" class="no-bottom">Selectionner importance: <output for="importance" id="importance_valeur">0</output>
+      <input name="importance" type ="range" min ="0" max="100" step ="1" value="0" oninput="outputUpdate(value)"/></label>
       <script>function outputUpdate(imp) {document.querySelector('#importance_valeur').value = imp;}</script>
 
       <!--Pays -->
@@ -42,17 +42,20 @@
       </select>
 
       <!--Image -->
-      <input type="file" name="vip_picture" id="vip_picture-upload">
-      <label for="vip_picture-upload" class="button">Choississez une image pour le VIP</label>
+
+      <label for="vip_picture" class="button">Choississez une image pour le VIP (max 2 Mo)<input type="file" name="vip_picture" id="vip_picture" required></label>
 
       <!--Bouton de validation -->
-      <input type="submit" value="Valider" class="button">
+      <input type="submit" value="Valider" class="button" >
+
       <?php
-      if($errorFields==true){
-        echo("<p class='erreur'>Veuillez renseigner tout les champs</p>");
-      }
+        if($errorFields==true){
+          echo("<p class='erreur'>Veuillez renseigner tout les champs</p>");
+        }
       ?>
+
     </form>
+
   </div>
 </div>
 

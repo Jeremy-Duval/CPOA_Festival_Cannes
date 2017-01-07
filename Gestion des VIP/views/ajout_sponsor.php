@@ -12,7 +12,7 @@
       <?php echo("<input type='hidden' name='vipid' value='".$vipid."'>");?>
 
       <!--Nom et prénom -->
-      <input type="text" name="sponsor" placeholder="Entrer le nom de l'organisation" class="big-font"><br>
+      <input type="text" name="sponsor" placeholder="Entrer le nom de l'organisation" class="big-font" required><br>
 
       <!--Bouton de validation -->
       <input type="submit" value="Valider" class="button">

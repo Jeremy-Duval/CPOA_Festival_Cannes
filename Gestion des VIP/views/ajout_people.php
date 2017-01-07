@@ -12,7 +12,7 @@
       <?php echo("<input type='hidden' name='vipid' value='".$vipid."'>");?>
 
       <!--Nom et prénom du compagnon -->
-      <input type="text" name="compagnon" placeholder="Entrer le nom du compagnon" class="big-font"><br>
+      <input type="text" name="compagnon" placeholder="Entrer le nom du compagnon ou 'Aucun'" class="big-font" required><br>
 
       <!--Bouton de validation -->
       <input type="submit" value="Valider" class="button">

@@ -1,8 +1,27 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
-
+/*@import url(http://fonts.googleapis.com/css?family=Playfair Display:400,500,700,300,100);
+*/
 @font-face {
     font-family: 'Playfair Display';
-    src: url(../PlayfairDisplay-Regular.ttf);
+    src: url('../fonts/Playfair_Display/EOT/PlayfairDisplay-Regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Playfair_Display/WOFF2/PlayfairDisplay-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/Playfair_Display/WOFF/PlayfairDisplay-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/Playfair_Display/TTF/PlayfairDisplay-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'Playfair Display Bold';
+    src: url('../fonts/Playfair_Display/EOT/PlayfairDisplay-Bold.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Playfair_Display/WOFF2/PlayfairDisplay-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/Playfair_Display/WOFF/PlayfairDisplay-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/Playfair_Display/TTF/PlayfairDisplay-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'Playfair Display Black';
+    src: url('../fonts/Playfair_Display/EOT/PlayfairDisplay-Black.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Playfair_Display/WOFF2/PlayfairDisplay-Black.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/Playfair_Display/WOFF/PlayfairDisplay-Black.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/Playfair_Display/TTF/PlayfairDisplay-Black.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
 /** Content **/
@@ -12,10 +31,14 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
   background-color: #c9d8ff;
-  font-family: "Roboto", helvetica, arial, sans-serif;
-  font-size: 14px;
+  font-family: 'Playfair Display';
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -24,6 +47,9 @@ body {
   position: relative;
 }
 
+input{
+  font-family: 'Playfair Display Black';
+}
 
 ul {
   padding-left: 0px;
@@ -53,7 +79,7 @@ div.table-title {
   font-size: 30px;
   font-weight: 400;
   font-style: normal;
-  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-family: 'Playfair Display';
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
 }
@@ -69,7 +95,7 @@ div.table-title {
   font-size: 30px;
   font-weight: 400;
   font-style: normal;
-  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-family: 'Playfair Display Black';
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
    /*text-transform:uppercase;*/;
 }
@@ -371,13 +397,20 @@ header ul li a:hover {
   background-color: #c9d8ff;
 }
 
-#vip_picture-upload {
+#vip_picture {
   opacity: 0;
   position: absolute;
-  width: 0.1px;
+  width: 180px;
+  height: 15px;
   padding: 0;
   margin: 0;
   z-index: -1;
+}
+
+
+.scroller{
+  overflow-y: scroll;
+  height:50vh;
 }
 
 /** Connexion **/
@@ -387,6 +420,10 @@ header ul li a:hover {
   width: 370px;
   padding: 70px 0 0;
   margin: auto;
+}
+
+.login-wide{
+  width:50vw;
 }
 
 .form {
@@ -399,9 +436,9 @@ header ul li a:hover {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.form input, .form label, .form select{
+.form input, .form label, .form select, .form textarea{
+  font-family: Arial;
   display: inline-block;
-  font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -413,7 +450,7 @@ header ul li a:hover {
 }
 
 .form .button, .button {
-  font-family: "Roboto", sans-serif;
+  font-family: Arial;
   text-transform: uppercase;
   outline: 0;
   background: #746ed2;
@@ -433,6 +470,10 @@ header ul li a:hover {
   background-color: #b0afc7;
 }
 
+.form textarea {
+    resize: none;
+    height: 35vh;
+}
 
 #no-cursor {
   display: block;
@@ -500,16 +541,19 @@ header ul li a:hover {
   font-style: italic;
 }
 
-#importance-label{
+.no-bottom{
   padding-bottom: 0;
 }
-#importance{
+
+.no-bottom input{
   margin-bottom: 0;
 }
 
 
 .groupe_boutton{
-    margin: 0 18% 0 18%;
+  display: table;
+  margin: 0 auto;
+  margin-top: 25px;
 }
 
 .bouttonAcceuil {
@@ -524,7 +568,6 @@ header ul li a:hover {
   margin: 0 10px 0 10px;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
 	font-size:20px;
 	font-weight:bold;
 	padding:13px 36px;
@@ -542,4 +585,91 @@ header ul li a:hover {
 
 #ajout_vip .big-font, .big-font option{
   font-size: 18px;
+}
+
+
+.vip_photo, .para_details {
+  display: table;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.para_details h2{
+  margin-bottom: 10px;
+}
+
+
+.vip_photo{
+    max-height: 180px;
+}
+
+.margin_bottom_large{
+  margin-bottom: 30px;
+}
+
+
+/* Hang */
+@-webkit-keyframes hvr-hang {
+  0% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  50% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+@keyframes hvr-hang {
+  0% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  50% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+@-webkit-keyframes hvr-hang-sink {
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+@keyframes hvr-hang-sink {
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+.hvr-hang {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.hvr-hang:hover, .hvr-hang:focus, .hvr-hang:active {
+  -webkit-animation-name: hvr-hang-sink, hvr-hang;
+  animation-name: hvr-hang-sink, hvr-hang;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-out, ease-in-out;
+  animation-timing-function: ease-out, ease-in-out;
+  -webkit-animation-iteration-count: 1, infinite;
+  animation-iteration-count: 1, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal, alternate;
+  animation-direction: normal, alternate;
 }

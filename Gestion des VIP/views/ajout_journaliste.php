@@ -12,7 +12,7 @@
       <?php echo("<input type='hidden' name='vipid' value='".$vipid."'>");?>
 
       <!--Nom et prénom -->
-      <input type="text" name="media" placeholder="Entrer le nom du media" class="big-font"><br>
+      <input type="text" name="media" placeholder="Entrer le nom du media" class="big-font" required><br>
 
       <!--Bouton de validation -->
       <input type="submit" value="Valider" class="button">

@@ -1,5 +1,7 @@
 <nav>
 	<ul>
-		<li><a href="index.php">Accueil</a></li>
+		<li>
+			<a href="index.php" class="hvr-hang">Accueil</a>
+	</li>
 	</ul>
 </nav>

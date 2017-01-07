@@ -1,13 +1,13 @@
 <?php $title="Acceuil Gestion des VIP";
-ob_start();
+  ob_start();
 ?>
 
-
-<!-- Affichage des films de la base de données -->
     <div class="table-title">
       <h1 class="inline">Liste des VIP -</h1>
-      <h2><?php echo("$count")?> VIP trouvé(s) dans la base de données.</h2>
+      <h2><?php echo("$count")?> VIP trouvé(s) dans la base de données.</h2><br>
+      <h3>Veuillez séléctionner un VIP pour accéder aux différentes options</h3>
     </div>
+    <div class="scroller">
     <table class="table-fill">
       <thead>
         <tr>
@@ -15,10 +15,10 @@ ob_start();
             foreach ($colnames as $col) {
               echo("<th class='text-center'>".$col['COLUMN_NAME']."</th>");
             }
-
           ?>
         </tr>
       </thead>
+
       <tbody class="table-hover">
         <?php
         foreach ($vip as $ligne) {
@@ -29,46 +29,62 @@ ob_start();
           echo("</tr>");
         }?>
       </tbody>
+
     </table>
-<div class="groupe_boutton">
-  <a href="index.php?action=ajout" class="bouttonAcceuil">Ajouter</a>
-  <form enctype="multipart/form-data" action="index.php?action=detail" method="post" id="detail" class="inline">
-    <!-- Prenom -->
-    <input type='hidden' name='prenom' value=''>
-    <!-- Nom -->
-    <input type='hidden' name='nom' value=''>
-    <!-- Importance -->
-    <input type='hidden' name='importance' value=''>
+      </div>
+    <div class="groupe_boutton">
 
-    <!--Bouton de validation -->
-    <input type="submit" value="Accéder au détail" class="bouttonAcceuil">
+      <a href="index.php?action=ajoutvip" class="bouttonAcceuil">Ajouter</a>
 
-  </form>
-  <form enctype="multipart/form-data" action="index.php?action=echanges" method="post" id="echange" class="inline">
-    <!-- Prenom -->
-    <input type='hidden' name='prenom' value=''>
-    <!-- Nom -->
-    <input type='hidden' name='nom' value=''>
-    <!-- Importance -->
-    <input type='hidden' name='importance' value=''>
+      <form enctype="multipart/form-data" action="index.php?action=detail" method="post" id="detail" class="inline">
+        <!-- Prenom -->
+        <input type='hidden' name='prenom' value=''>
+        <!-- Nom -->
+        <input type='hidden' name='nom' value=''>
+        <!-- Importance -->
+        <input type='hidden' name='importance' value=''>
 
-    <!--Bouton de validation -->
-    <input type="submit" value="Accés aux échanges" class="bouttonAcceuil">
+        <!--Bouton de validation -->
+        <input type="submit" value="Accéder au détail" class="bouttonAcceuil" onclick="checkIfSelected()">
 
-  </form>
-  <a href="#" class="bouttonAcceuil">Accés aux actions</a>
-  <form enctype="multipart/form-data" action="index.php?action=suppression" method="post" id="suppression" class="inline" onsubmit="return confirm('Voulez-vous vraiment supprimer ce VIP ?');">
-    <!-- Prenom -->
-    <input type='hidden' name='prenom' value=''>
-    <!-- Nom -->
-    <input type='hidden' name='nom' value=''>
-    <!-- Importance -->
-    <input type='hidden' name='importance' value=''>
+      </form>
 
-    <!--Bouton de validation -->
-    <input type="submit" value="Suppression" class="bouttonAcceuil">
-  </form>
-</div>
+      <form enctype="multipart/form-data" action="index.php?action=echanges" method="post" id="echange" class="inline">
+        <!-- Prenom -->
+        <input type='hidden' name='prenom' value=''>
+        <!-- Nom -->
+        <input type='hidden' name='nom' value=''>
+        <!-- Importance -->
+        <input type='hidden' name='importance' value=''>
+        <!--Bouton de validation -->
+        <input type="submit" value="Accés aux échanges" class="bouttonAcceuil" onclick="checkIfSelected()">
+
+      </form>
+
+      <form enctype="multipart/form-data" action="index.php?action=actions" method="post" id="action" class="inline">
+        <!-- Prenom -->
+        <input type='hidden' name='prenom' value=''>
+        <!-- Nom -->
+        <input type='hidden' name='nom' value=''>
+        <!-- Importance -->
+        <input type='hidden' name='importance' value=''>
+        <!--Bouton de validation -->
+        <input type="submit" value="Accés aux actions" class="bouttonAcceuil" onclick="checkIfSelected()">
+
+      </form>
+
+      <form enctype="multipart/form-data" action="index.php?action=suppression" method="post" id="suppression" class="inline" onsubmit="return confirm('Voulez-vous vraiment supprimer ce VIP ?');">
+        <!-- Prenom -->
+        <input type='hidden' name='prenom' value=''>
+        <!-- Nom -->
+        <input type='hidden' name='nom' value=''>
+        <!-- Importance -->
+        <input type='hidden' name='importance' value=''>
+
+        <!--Bouton de validation -->
+        <input type="submit" value="Suppression" class="bouttonAcceuil" onclick="checkIfSelected()">
+      </form>
+    </div>
 
 <script>
   $(".table-hover tr").click(function(){
@@ -80,6 +96,13 @@ ob_start();
    $("input[name='nom']").val(nom);
    $("input[name='importance']").val(importance);
   });
+  
+  function checkIfSelected(){
+    if(!($(".table-hover tr").hasClass('selected'))){
+      alert("Vous n'avez sélectionner aucun VIP");
+      event.preventDefault();
+    }
+  }
 </script>
 <?php
   $content=ob_get_clean();
