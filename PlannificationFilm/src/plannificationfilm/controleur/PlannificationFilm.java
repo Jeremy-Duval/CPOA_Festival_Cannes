@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import plannificationfilm.modele.CalendarManager;
 import plannificationfilm.modele.ConnectionManager;
 
+
 /**
  *
  * @author Yann
@@ -34,26 +35,6 @@ public class PlannificationFilm {
             }    
     }
     
-    public void setCalendar() throws SQLException{
-        String titre = new String();
-        int categorie;
-        String date = new String();
-
-        ResultSet rset=caManager.getFilm();
-        while (rset.next())
-        {
-            titre=rset.getString(1);
-            categorie=rset.getInt(2);
-            date=rset.getString(3);
-            JTable1[categorie][date]=titre;
-            /*switch (categorie)
-            {
-                case 1 :
-            }*/
-            
-        }
-        
-        
-    }
+    
     
 }
