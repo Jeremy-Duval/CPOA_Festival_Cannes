@@ -5,10 +5,13 @@
  */
 package plannificationfilm.modele;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JTabbedPane;
 import javax.swing.table.AbstractTableModel;
+import plannificationfilm.vue.ApplicationFrame;
 
 /**
  *
@@ -16,14 +19,14 @@ import javax.swing.table.AbstractTableModel;
  */
 public class CalendarManager {
 
-    ConnectionManager conn;
+    static ConnectionManager conn;
     
     public CalendarManager(ConnectionManager connection){
         conn=connection;
     }
     
     
-    public class abTableModel extends AbstractTableModel
+    public static class abTableModel extends AbstractTableModel
     {
         private Object[][] data;
         private String[] title;
@@ -58,48 +61,66 @@ public class CalendarManager {
         return rset;
         }
         
-        public void setValueAt(String nom, int row, int col, int index)
+        public void setValueAt(String nom, int row, int col)
         {
-        data[row][col]= nom;
-        fireTableCellUpdated(row, col);
+            data[row][col]= nom;
+            fireTableCellUpdated(row, col);
         }
         
         public void setCalendar() throws SQLException{
-        String titre = new String();
-        int categorie;
-        String date;
+            String titre = new String();
+            int categorie = 0;
+            String date = null;
 
-        ResultSet rset=this.getFilm();
-        while (rset.next())
-        {
-            titre=rset.getString(1);
-            categorie=rset.getInt(2);
-            date=rset.getString(3);
-            int heure;
-            int j=8;
-            int i=11;
-            String str= new String();
-            while(i<=12)
+            ResultSet rset=this.getFilm();
+            while (rset.next())
             {
-                str=str+date.charAt(i);
-                i++;
+                titre=rset.getString(1);
+                categorie=rset.getInt(2);
+                date=rset.getString(3);
+                int heure;
+                int j=8;
+                int i=11;
+                String str= new String();
+                while(i<=12)
+                {
+                    str=str+date.charAt(i);
+                    i++;
+                }
+                heure=Integer.parseInt(str);
+                heure=heure-8;
+
+                setValueAt(titre,heure, categorie);
+                    
             }
-            heure=Integer.parseInt(str);
-            while(j<=9)
-            {
-                str=str+date.charAt(j);
-                j++;
-            }
-            int index= Integer.parseInt(str);
-            heure=heure-8;
-            index=index-8;
-            setValueAt(titre,heure, categorie, index);
-            
             
         }
         
-        
-    }
+        public String[] getDate() throws SQLException
+        {
+            ResultSet rset;
+            String str1 = null;
+            String date= null;
+            String tabdate[] = null;
+            int x = 0;
+            try (Statement stmt = conn.createStatement()) {
+                rset = stmt.executeQuery("SELECT datetime FROM creneaux;");
+            }
+            while(rset.next())
+            {
+                str1=rset.getString(1);
+                int i=0;
+                while(i<=9)
+                {                    
+                    date=date+str1.charAt(i);                    
+                    i++;
+                }
+                tabdate[x]=date;
+                x++;
+            }
+            return(tabdate);
+            
+        }
     }
     
     

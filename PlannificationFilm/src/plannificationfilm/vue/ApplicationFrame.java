@@ -5,6 +5,9 @@
  */
 package plannificationfilm.vue;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import plannificationfilm.modele.CalendarManager.abTableModel;
 import javax.swing.table.AbstractTableModel;
@@ -20,7 +23,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
     /**
      * Creates new form ApplicationFrame
      */
-    public ApplicationFrame() {
+    public ApplicationFrame() throws SQLException {
         String title[] = {"Heure", "Palme d'Or", "Grand Prix", "Interprétation féminine", "Interprétation masculine", "Courts métrages", "Prix du scénario", "Prix du Jury", "Prix Un Certain Regard", "Prix de la mise en scène"};
         Object[][] data ={
         {8, null, null, null, null, null, null, null, null, null},
@@ -39,6 +42,15 @@ public class ApplicationFrame extends javax.swing.JFrame {
         };
         modele=new abTableModel(data, title);
         initComponents();
+        int x=0;
+        String tabdate[]=modele.getDate();
+        while(x<15)
+        {
+            jTabbedPane4.setSelectedIndex(x);
+            jTabbedPane4.setTitleAt(x,tabdate[x]);
+            modele.setCalendar();
+        }
+        
     }
 
     /**
@@ -229,92 +241,32 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("08/05", jScrollPane1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Date", "Palme d'Or", "Grand Prix", "Interprétation féminine", "Interprétation masculine", "Courts métrages", "Prix du scénario", "Prix du jury", "Prix un ceratin regard ", "Prix de la mise en scène"
-            }
-        ));
+        jTable2.setModel(modele);
         jScrollPane2.setViewportView(jTable2);
 
         jTabbedPane4.addTab("09/05", jScrollPane2);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Date", "Palme d'Or", "Grand Prix", "Interprétation féminine", "Interprétation masculine", "Courts métrages", "Prix du scénario", "Prix du jury ", "Prix un ceratin regard", "Prix de la mise en scène"
-            }
-        ));
+        jTable3.setModel(modele);
         jScrollPane3.setViewportView(jTable3);
 
         jTabbedPane4.addTab("10/05", jScrollPane3);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Date", "Palme d'Or", "Grand Prix", "Interprétatiojn féminine", "INterprétation masculine", "Courts métrages", "Prix du scénario", "Prix du jury ", "Prix un certain regard ", "prix de la mise en scène "
-            }
-        ));
+        jTable4.setModel(modele);
         jScrollPane4.setViewportView(jTable4);
 
         jTabbedPane4.addTab("11/05", jScrollPane4);
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Date", "Palme d'Or", "Grand Prix", "Interprétation féminine", "interprétation masculine", "Courts métrages", "Prix du scénario", "Prix du jury", "Prix un certain regard", "Prix de la mise en scène "
-            }
-        ));
+        jTable5.setModel(modele);
         jScrollPane5.setViewportView(jTable5);
 
         jTabbedPane4.addTab("12/05", jScrollPane5);
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Date", "Palme d'Or", "Grand Prix", "Interprétation féminine", "Interprétation masculine", "Court métrages", "Prix du scénario", "Prix du jury ", "Prix un certain regard ", "Prix de la mise en scène"
-            }
-        ));
+        jTable6.setModel(modele);
         jScrollPane6.setViewportView(jTable6);
 
         jTabbedPane4.addTab("13/05", jScrollPane6);
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Date", "Palme d'Or", "Grand Prix", "Interprétation féminine", "INterprétation masculine", "Courts métrages", "Prix du scénario", "Prix du jury", "Prix un certain regard", "Prix de la mise en scène"
-            }
-        ));
+        jTable7.setModel(modele);
         jScrollPane7.setViewportView(jTable7);
 
         jTabbedPane4.addTab("14/05", jScrollPane7);
@@ -451,7 +403,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ApplicationFrame().setVisible(true);
+                try {
+                    new ApplicationFrame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ApplicationFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
