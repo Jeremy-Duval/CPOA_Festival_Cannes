@@ -106,6 +106,7 @@ public class CalendarManager {
             try (Statement stmt = conn.createStatement()) {
                 rset = stmt.executeQuery("SELECT datetime FROM creneaux;");
             }
+            
             while(rset.next())
             {
                 str1=rset.getString(1);
@@ -115,13 +116,14 @@ public class CalendarManager {
                     date=date+str1.charAt(i);                    
                     i++;
                 }
-                if(tabdate[x-1]!=date)
+                if(!tabdate[x-1].equals(date))
                 {
                     tabdate[x]=date;
                     x++;
                 }
                 
             }
+            
             return(tabdate);
             
         }
