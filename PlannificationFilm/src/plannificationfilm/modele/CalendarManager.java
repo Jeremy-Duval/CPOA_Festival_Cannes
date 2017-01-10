@@ -115,8 +115,12 @@ public class CalendarManager {
                     date=date+str1.charAt(i);                    
                     i++;
                 }
-                tabdate[x]=date;
-                x++;
+                if(tabdate[x-1]!=date)
+                {
+                    tabdate[x]=date;
+                    x++;
+                }
+                
             }
             return(tabdate);
             
