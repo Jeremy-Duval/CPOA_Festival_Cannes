@@ -96,7 +96,7 @@ public class CalendarManager {
             
         }
         
-        public String[] getDate() throws SQLException
+        /*public String[] getDate() throws SQLException
         {
             ResultSet rset;
             String str1 = null;
@@ -126,7 +126,7 @@ public class CalendarManager {
             
             return(tabdate);
             
-        }
+        } */
     }
     
     
