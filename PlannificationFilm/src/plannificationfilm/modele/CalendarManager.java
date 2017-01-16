@@ -53,26 +53,61 @@ public class CalendarManager {
             return this.data[row][col];
         }
         
-        public ResultSet getFilm() throws SQLException {
+        public ResultSet getFilm1() throws SQLException {
         ResultSet rset;
         try (Statement stmt = conn.createStatement()) {
             rset = stmt.executeQuery("SELECT titre,id_categorie, datetime FROM films, creneaux where creneaux.id_film=films.id ;");
         }
         return rset;
         }
-        
+        public ResultSet getFilm2() throws SQLException {
+        ResultSet rset;
+        try (Statement stmt = conn.createStatement()) {
+            rset = stmt.executeQuery("SELECT titre,id_categorie, datetime FROM films, creneaux where creneaux.id_film=films.id and datetime like 2017-05-09%;");
+        }
+        return rset;
+        }
         public void setValueAt(String nom, int row, int col)
         {
             data[row][col]= nom;
             fireTableCellUpdated(row, col);
         }
         
-        public void setCalendar() throws SQLException{
+        public void setCalendar1() throws SQLException{
             String titre = new String();
             int categorie = 0;
             String date = null;
 
-            ResultSet rset=this.getFilm();
+            ResultSet rset=this.getFilm1();
+            while (rset.next())
+            {
+                titre=rset.getString(1);
+                categorie=rset.getInt(2);
+                date=rset.getString(3);
+                int heure;
+                int j=8;
+                int i=11;
+                String str= new String();
+                while(i<=12)
+                {
+                    str=str+date.charAt(i);
+                    i++;
+                }
+                heure=Integer.parseInt(str);
+                heure=heure-8;
+
+                setValueAt(titre,heure, categorie);
+                    
+            }
+            
+        }
+        
+        public void setCalendar2() throws SQLException{
+            String titre = new String();
+            int categorie = 0;
+            String date = null;
+
+            ResultSet rset=this.getFilm1();
             while (rset.next())
             {
                 titre=rset.getString(1);

@@ -22,6 +22,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form ApplicationFrame
+     * @throws java.sql.SQLException
      */
     public ApplicationFrame() throws SQLException {
         String title[] = {"Heure", "Palme d'Or", "Grand Prix", "Interprétation féminine", "Interprétation masculine", "Courts métrages", "Prix du scénario", "Prix du Jury", "Prix Un Certain Regard", "Prix de la mise en scène"};
@@ -42,14 +43,12 @@ public class ApplicationFrame extends javax.swing.JFrame {
         };
         modele=new abTableModel(data, title);
         initComponents();
-        int x=0;
-        String tabdate[]=modele.getDate();
-        while(x<15)
-        {
-            jTabbedPane4.setSelectedIndex(x);
-            jTabbedPane4.setTitleAt(x,tabdate[x]);
-            modele.setCalendar();
-        }
+        
+        jTabbedPane4.setSelectedIndex(0);   
+        modele.setCalendar1();
+        jTabbedPane4.setSelectedIndex(1);
+        modele.setCalendar2();
+        
         
     }
 
