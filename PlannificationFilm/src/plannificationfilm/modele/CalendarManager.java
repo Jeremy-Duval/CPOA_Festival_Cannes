@@ -20,23 +20,20 @@ import plannificationfilm.vue.ApplicationFrame;
 public class CalendarManager {
 
     static ConnectionManager conn;
-    
-    public CalendarManager(ConnectionManager connection){
-        conn=connection;
+
+    public CalendarManager(ConnectionManager connection) {
+        conn = connection;
     }
-    
-    
-    public static class abTableModel extends AbstractTableModel
-    {
+
+    public static class abTableModel extends AbstractTableModel {
+
         private Object[][] data;
         private String[] title;
-        
-        public abTableModel(Object[][] data, String[] title){
-            this.data=data;
-            this.title=title;
-        }
 
-        
+        public abTableModel(Object[][] data, String[] title) {
+            this.data = data;
+            this.title = title;
+        }
 
         @Override
         public int getRowCount() {
@@ -52,86 +49,91 @@ public class CalendarManager {
         public Object getValueAt(int row, int col) {
             return this.data[row][col];
         }
-        
-        public ResultSet getFilm1() throws SQLException {
-        ResultSet rset;
-        try (Statement stmt = conn.createStatement()) {
-            rset = stmt.executeQuery("SELECT titre,id_categorie, DATE(datetime) as day  FROM films, creneaux where creneaux.id_film=films.id and day like '2017-05-08%';");
+
+        public ResultSet getDate() throws SQLException {
+            ResultSet rset;
+            try (Statement stmt = conn.createStatement()) {
+                rset = stmt.executeQuery("SELECT distinct DATE(datetime) as day FROM creneaux where id_film = 0 order by day;");
+            }
+            return rset;
         }
-        return rset;
+
+        public /*ResultSet*/ void getFilm1() throws SQLException {
+            ResultSet rset;
+            try (Statement stmt = conn.createStatement()) {
+                rset = stmt.executeQuery("SELECT titre FROM films;");
+            }
+            System.out.println(rset);
+            //return rset;
         }
-        
+
         public ResultSet getFilm2() throws SQLException {
-        ResultSet rset;
-        try (Statement stmt = conn.createStatement()) {
-            rset = stmt.executeQuery("SELECT titre,id_categorie, DAY(datetime) FROM films, creneaux where creneaux.id_film=films.id and datetime like 2017-05-09%;");
+            ResultSet rset;
+            try (Statement stmt = conn.createStatement()) {
+                rset = stmt.executeQuery("SELECT titre,id_categorie, DATE(datetime) FROM films, creneaux where creneaux.id_film=films.id and datetime like '2017-05-09%';");
+            }
+            return rset;
         }
-        return rset;
-        }
-        public void setValueAt(String nom, int row, int col)
-        {
-            data[row][col]= nom;
+
+        public void setValueAt(String nom, int row, int col) {
+            data[row][col] = nom;
             fireTableCellUpdated(row, col);
         }
-        
-        public void setCalendar1() throws SQLException{
+
+        public void setCalendar1() throws SQLException {
             String titre = new String();
             int categorie = 0;
             String date = null;
 
-            ResultSet rset=this.getFilm1();
-            while (rset.next())
-            {
-                titre=rset.getString(1);
-                categorie=rset.getInt(2);
-                date=rset.getString(3);
+            /*ResultSet rset = */getFilm1();
+            /*while (rset.next()) {
+                titre = rset.getString(1);
+                categorie = rset.getInt(2);
+                date = rset.getString(3);
                 int heure;
-                int j=8;
-                int i=11;
-                String str= new String();
-                while(i<=12)
-                {
-                    str=str+date.charAt(i);
+                int j = 8;
+                int i = 11;
+                String str = new String();
+                while (i <= 12) {
+                    str = str + date.charAt(i);
                     i++;
                 }
-                heure=Integer.parseInt(str);
-                heure=heure-8;
+                heure = Integer.parseInt(str);
+                heure = heure - 8;
 
-                setValueAt(titre,heure, categorie);
-                    
-            }
-            
+                setValueAt(titre, heure, categorie);
+
+            }*/
+
         }
-        
-        public void setCalendar2() throws SQLException{
+
+        public void setCalendar2() throws SQLException {
             String titre = new String();
             int categorie = 0;
             String date = null;
 
-            ResultSet rset=this.getFilm1();
-            while (rset.next())
-            {
-                titre=rset.getString(1);
-                categorie=rset.getInt(2);
-                date=rset.getString(3);
+            ResultSet rset = this.getFilm2();
+            while (rset.next()) {
+                titre = rset.getString(1);
+                categorie = rset.getInt(2);
+                date = rset.getString(3);
                 int heure;
-                int j=8;
-                int i=11;
-                String str= new String();
-                while(i<=12)
-                {
-                    str=str+date.charAt(i);
+                int j = 8;
+                int i = 11;
+                String str = new String();
+                while (i <= 12) {
+                    str = str + date.charAt(i);
                     i++;
                 }
-                heure=Integer.parseInt(str);
-                heure=heure-8;
+                heure = Integer.parseInt(str);
+                heure = heure - 8;
 
-                setValueAt(titre,heure, categorie);
-                    
+                setValueAt(titre, heure, categorie);
+
             }
-            
+
         }
-        
+
         /*public String[] getDate() throws SQLException
         {
             ResultSet rset;
@@ -164,7 +166,5 @@ public class CalendarManager {
             
         } */
     }
-    
-    
-    
+
 }
