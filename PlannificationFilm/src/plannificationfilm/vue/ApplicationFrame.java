@@ -87,6 +87,11 @@ public class ApplicationFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPaneMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTabbedPaneMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneMenuMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCalendrierLayout = new javax.swing.GroupLayout(jPanelCalendrier);
         jPanelCalendrier.setLayout(jPanelCalendrierLayout);
@@ -540,6 +545,14 @@ public class ApplicationFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBoxDateAjActionPerformed
 
+    private void jTabbedPaneMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMenuMouseClicked
+        String[] listFilmsToAdd = this.ListFilmToAddToString();
+        jComboBoxSelFilmAj.setModel(new javax.swing.DefaultComboBoxModel(listFilmsToAdd));
+        
+        String[] listFilms = this.ListFilmToString();
+        jComboBoxFilms.setModel(new javax.swing.DefaultComboBoxModel(listFilms));
+    }//GEN-LAST:event_jTabbedPaneMenuMouseClicked
+
     /**
      * ***************************FONCTIONS PERSO*****************************
      */
@@ -552,17 +565,19 @@ public class ApplicationFrame extends javax.swing.JFrame {
      */
     private void reinit_modifier_film() {
         //remise à 0 de la selection de film et vidage des combo box
-        jComboBoxFilms.setSelectedIndex(0);
+        jComboBoxFilms.setSelectedIndex(-1);
         jComboBoxCategories.removeAllItems();
         jComboBoxDate.removeAllItems();
         jComboBoxHeure1.removeAllItems();
         jComboBoxHeure2.removeAllItems();
+        
         //remise des boutons et comboBox à disable
         jComboBoxCategories.setEnabled(false);
         jComboBoxDate.setEnabled(false);
         jComboBoxHeure1.setEnabled(false);
         jComboBoxHeure2.setEnabled(false);
         jButtonValiderModif.setEnabled(false);
+        
         //réinitilisation des variables de test générique
         objectFilmModif = null;
         objectDateModif = null;
