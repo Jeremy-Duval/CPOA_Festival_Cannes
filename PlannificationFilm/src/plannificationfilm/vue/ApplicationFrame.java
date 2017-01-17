@@ -27,8 +27,9 @@ public class ApplicationFrame extends javax.swing.JFrame {
     public ApplicationFrame() throws SQLException {
         String title[] = {"Heure", "Palme d'Or", "Grand Prix", "Interprétation féminine", "Interprétation masculine", "Courts métrages", "Prix du scénario", "Prix du Jury", "Prix Un Certain Regard", "Prix de la mise en scène"};
         Object[][] data ={
-        {8, null, null, null, null, null, null, null, null, null},
-        {9, null, null, null, null, null, null, null, null, null},
+        {"Heure", "Palme d'Or", "Grand Prix", "Interprétation féminine", "Interprétation masculine", "Courts métrages", "Prix du scénario", "Prix du Jury", "Prix Un Certain Regard", "Prix de la mise en scène"},
+        {8, null, null, "Star Wars 191", null, null, null, null, null, null},
+        {9, null, null, "Star Wars 191", null, null, null, null, null, null},
         {10, null, null, null, null, null, null, null, null, null},
         {11, null, null, null, null, null, null, null, null, null},
         {12, null, null, null, null, null, null, null, null, null},
@@ -47,7 +48,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         jTabbedPane4.setSelectedIndex(0);   
         modele.setCalendar1();
         jTabbedPane4.setSelectedIndex(1);
-        modele.setCalendar2();
+        //modele.setCalendar2();
         
         
     }

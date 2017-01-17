@@ -57,16 +57,16 @@ public class CalendarManager {
             }
             return rset;
         }
-
-        public /*ResultSet*/ void getFilm1() throws SQLException {
+        
+        public ResultSet getFilm1() throws SQLException {
             ResultSet rset;
             try (Statement stmt = conn.createStatement()) {
-                rset = stmt.executeQuery("SELECT titre FROM films;");
+                rset = stmt.executeQuery("SELECT titre, id_categorie FROM films;");
             }
             System.out.println(rset);
-            //return rset;
+            return rset;
         }
-
+        /*
         public ResultSet getFilm2() throws SQLException {
             ResultSet rset;
             try (Statement stmt = conn.createStatement()) {
@@ -74,7 +74,7 @@ public class CalendarManager {
             }
             return rset;
         }
-
+        */
         public void setValueAt(String nom, int row, int col) {
             data[row][col] = nom;
             fireTableCellUpdated(row, col);
@@ -85,8 +85,8 @@ public class CalendarManager {
             int categorie = 0;
             String date = null;
 
-            /*ResultSet rset = */getFilm1();
-            /*while (rset.next()) {
+            ResultSet rset = getFilm1();
+            while (rset.next()) {
                 titre = rset.getString(1);
                 categorie = rset.getInt(2);
                 date = rset.getString(3);
@@ -103,10 +103,10 @@ public class CalendarManager {
 
                 setValueAt(titre, heure, categorie);
 
-            }*/
+            }
 
         }
-
+        /*
         public void setCalendar2() throws SQLException {
             String titre = new String();
             int categorie = 0;
