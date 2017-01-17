@@ -6,12 +6,15 @@
   require("Model/EchangesManager.php");
   require("Model/ActionsManager.php");
 
+  /*Création des managers */
+
   $m  = new Manager;
   $vm = new VIPManager;
   $dm = new DetailManager;
   $em = new EchangesManager;
   $am = new ActionsManager;
 
+  /* Option : Ajout d'un VIP */
 
   if (isset($_GET['action']) && ($_GET['action'] == 'ajoutvip')) {
 
@@ -20,12 +23,7 @@
     $errorFields = false;
     require("Views/ajout_vip.php");
 
-  }else if (isset($_GET['action']) && ($_GET['action'] == 'ajouterror1')) {
-
-    $pays= $vm->getPays();
-    $type = $vm->getType();
-    $errorFields = true;
-    require("Views/ajout_vip.php");
+  /* Option : Ajout d'un VIP : Validation */
 
   }else if(isset($_GET['action']) && ($_GET['action'] == 'vip_sent')){
 
@@ -52,6 +50,7 @@
         require("Views/ajout_sponsor.php");
       }
 
+  /* Option : Ajout d'un VIP : Validation 2*/
   }else if(isset($_GET['action']) && ($_GET['action'] == 'type_sent')){
 
     if(isset($_POST['media'])){
@@ -65,6 +64,7 @@
     }
     header("Location: index.php");
 
+  /* Option : Accéder aux détails*/
   }else if(isset($_GET['action']) && ($_GET['action'] == 'detail')){
 
     $id=$vm->getID($_POST['prenom'],$_POST['nom'],$_POST['importance']);
@@ -91,6 +91,8 @@
       $sponsor=$dm->getOrganisation($p_id);
     }
     require("Views/detail.php");
+
+  /* Option : Supprimer VIP */
   }else if(isset($_GET['action']) && ($_GET['action'] == 'suppression')){
 
     $p_id=$vm->getID($_POST['prenom'],$_POST['nom'],$_POST['importance']);
@@ -108,6 +110,7 @@
     $suppr=$vm->delVIP($p_id);
     header("Location: index.php");
 
+  /* Option : Accéder aux échanges */
   }else if(isset($_GET['action']) && ($_GET['action'] == 'echanges')){
 
     $id=$vm->getID($_POST['prenom'],$_POST['nom'],$_POST['importance']);

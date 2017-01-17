@@ -51,7 +51,7 @@ ob_start();
     <input type='hidden' name='id_vip' value=''>
 
     <!--Bouton de validation -->
-    <input type="submit" value="Ajouter" class="bouttonAcceuil" onclick="checkIfSelected()">
+    <input type="submit" value="Ajouter" class="bouttonAcceuil" >
 
   </form>
   <form enctype="multipart/form-data" action="index.php?action=edition_echange" method="post" id="edition_echange" class="inline">
