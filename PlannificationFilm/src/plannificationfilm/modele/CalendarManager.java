@@ -50,15 +50,9 @@ public class CalendarManager {
             return this.data[row][col];
         }
 
-        public ResultSet getDate() throws SQLException {
-            ResultSet rset;
-            try (Statement stmt = conn.createStatement()) {
-                rset = stmt.executeQuery("SELECT distinct DATE(datetime) as day FROM creneaux where id_film = 0 order by day;");
-            }
-            return rset;
-        }
         
-        public ResultSet getFilm1() throws SQLException {
+        
+        /*public ResultSet getFilm1() throws SQLException {
             ResultSet rset;
             try (Statement stmt = conn.createStatement()) {
                 rset = stmt.executeQuery("SELECT titre, id_categorie FROM films;");
@@ -66,7 +60,7 @@ public class CalendarManager {
             System.out.println(rset);
             return rset;
         }
-        /*
+        
         public ResultSet getFilm2() throws SQLException {
             ResultSet rset;
             try (Statement stmt = conn.createStatement()) {
@@ -74,7 +68,7 @@ public class CalendarManager {
             }
             return rset;
         }
-        */
+        
         public void setValueAt(String nom, int row, int col) {
             data[row][col] = nom;
             fireTableCellUpdated(row, col);

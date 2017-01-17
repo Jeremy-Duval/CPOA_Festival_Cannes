@@ -46,7 +46,7 @@ public class ApplicationFrame extends javax.swing.JFrame {
         initComponents();
         
         jTabbedPane4.setSelectedIndex(0);   
-        modele.setCalendar1();
+        //modele.setCalendar1();
         jTabbedPane4.setSelectedIndex(1);
         //modele.setCalendar2();
         
