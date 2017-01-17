@@ -56,14 +56,15 @@ public class CalendarManager {
         public ResultSet getFilm1() throws SQLException {
         ResultSet rset;
         try (Statement stmt = conn.createStatement()) {
-            rset = stmt.executeQuery("SELECT titre,id_categorie, datetime FROM films, creneaux where creneaux.id_film=films.id ;");
+            rset = stmt.executeQuery("SELECT titre,id_categorie, DATE(datetime) as day  FROM films, creneaux where creneaux.id_film=films.id and day like '2017-05-08%';");
         }
         return rset;
         }
+        
         public ResultSet getFilm2() throws SQLException {
         ResultSet rset;
         try (Statement stmt = conn.createStatement()) {
-            rset = stmt.executeQuery("SELECT titre,id_categorie, datetime FROM films, creneaux where creneaux.id_film=films.id and datetime like 2017-05-09%;");
+            rset = stmt.executeQuery("SELECT titre,id_categorie, DAY(datetime) FROM films, creneaux where creneaux.id_film=films.id and datetime like 2017-05-09%;");
         }
         return rset;
         }
